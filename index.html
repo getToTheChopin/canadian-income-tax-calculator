@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+
+<head>
+    <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Canadian Income Tax Calculator</h1>
+
+    <h2>Analysis #1: After-Tax Income Calculator</h2>
+
+    <div class="assumptionTableDiv">
+        <table>
+            <tr>
+                <th colspan="2">Your Income Assumptions (2019)</th>
+            </tr>
+            <tr>
+                <td width="40%">Employment Income</td>
+                <td width="60%">
+                    <input type="number" id="employmentIncome" class="userInput1 input-number–noSpinners" value="40000" min="0" max="10000000" step="1000">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Capital Gains</td>
+                <td>
+                    <input type="number" id="capitalGains" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000" step="1000">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Eligible Canadian Dividends</td>
+                <td>
+                    <input type="number" id="eligibleDividends" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000" step="1000">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Non-Eligible Dividends</td>
+                <td>
+                    <input type="number" id="nonEligibleDividends" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000" step="1000">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Other Income</td>
+                <td>
+                    <input type="number" id="otherIncome" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000" step="1000">
+                </td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <th colspan="2">Your RRSP Assumption</th>
+            </tr>
+            <tr>
+                <td width="40%">RRSP Contribution</td>
+                <td width="60%">
+                    <input type="number" id="RRSPContribution" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000" step="1000">
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div id="outputDiv">
+
+        <div id="afterTaxIncomeBarChartDiv">
+            <canvas id="afterTaxIncomeBarChart"></canvas>
+        </div>
+
+        <div id="totalTaxBarChartDiv">
+            <canvas id="totalTaxBarChart"></canvas>
+        </div>
+
+        <div id="avgTaxRateBarChartDiv">
+            <canvas id="avgTaxRateBarChart"></canvas>
+        </div>
+
+    </div>
+
+    <h2>Analysis #2: Pre-Tax Income Calculator</h2>
+
+    <div class="assumptionTableDiv">
+        <table>
+            <tr>
+                <td width="40%">After-Tax Income</td>
+                <td width="60%">
+                    <input type="number" id="afterTaxIncomeAssumption" class="userInput2 input-number–noSpinners" value="30000" min="0" max="10000000" step="1000">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="outputDiv2">
+        <div id="grossIncomeBarChartDiv">
+            <canvas id="grossIncomeBarChart"></canvas>
+        </div>
+    </div>
+
+    <h2>Analysis #3: Provincial Comparison</h2>
+
+    <select name="regionA" class="userInput3" id="regionDropDownListA">
+        <option value="AB">AB</option>
+        <option value="BC">BC</option>
+        <option value="MB">MB</option>
+        <option value="NB">NB</option>
+        <option value="NL">NL</option>
+        <option value="NS">NS</option>
+        <option value="NT">NT</option>
+        <option value="NU">NU</option>
+        <option value="ON">ON</option>
+        <option value="PE">PE</option>
+        <option value="QC">QC</option>
+        <option value="SK">SK</option>
+        <option value="YU">YU</option>
+    </select> 
+
+    <select name="regionB" class="userInput3" id="regionDropDownListB">
+        <option value="AB">AB</option>
+        <option value="BC">BC</option>
+        <option value="MB">MB</option>
+        <option value="NB">NB</option>
+        <option value="NL">NL</option>
+        <option value="NS">NS</option>
+        <option value="NT">NT</option>
+        <option value="NU">NU</option>
+        <option value="ON">ON</option>
+        <option value="PE">PE</option>
+        <option value="QC">QC</option>
+        <option value="SK">SK</option>
+        <option value="YU">YU</option>
+    </select> 
+
+    <div id="outputDiv3">
+        <div id="provinceChartDiv">
+            <canvas id="provinceChart"></canvas>
+        </div>   
+
+        <div id="provinceDeltaChartDiv">
+            <canvas id="provinceDeltaChart"></canvas>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.5.0"></script>
+    <script src="canadianIncomeTaxScript.js"></script>
+
+</body>
+
+</html>

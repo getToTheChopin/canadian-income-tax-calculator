@@ -1,0 +1,243 @@
+html, body {
+    font-size: 15px;
+    font-family: Helvetica, sans-serif;
+}
+
+th {
+    border: 1px solid rgb(0, 30, 87);
+    padding: 5px;
+    text-align: center;
+    vertical-align:middle;
+    background-color: rgb(238, 238, 238);
+}
+
+table {
+    table-layout: fixed;
+    margin-top:2px;
+    margin-bottom:2px;
+    width:100%;
+	font-size:0.9em;
+}
+
+td {
+    border: 1px solid rgb(0, 30, 87);
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: white;
+}
+
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 90%;
+    outline: none; /* Remove outline */
+    text-align: center;
+    padding:0;
+    margin:0;
+    border:none !important;
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 12px; /* Set a specific slider handle width */
+    height: 12px; /* Slider handle height */
+    background: rgb(255, 131, 15);
+    cursor: pointer; /* Cursor on hover */
+    border-radius:12px;
+	border:1px solid rgb(172, 89, 12);
+	margin-top:-3px;
+}
+
+.slider::-moz-range-thumb {
+    width: 12px; /* Set a specific slider handle width */
+    height: 12px; /* Slider handle height */
+    /*background: rgb(0, 183, 255);*/
+    background: rgb(255, 131, 15);
+    cursor: pointer; /* Cursor on hover */
+    border-radius:12px;
+    border:1px solid rgb(172, 89, 12);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: #797979;
+    border-radius: 1.3px;
+  }
+  
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #797979;
+  }
+  
+  input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: #797979;
+    border-radius: 1.3px;
+  }
+  
+  input[type=range]::-ms-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+  }
+  input[type=range]::-ms-fill-lower {
+    background: #797979;
+    border-radius: 2.6px;
+  }
+  input[type=range]:focus::-ms-fill-lower {
+    background: #797979;
+  }
+  input[type=range]::-ms-fill-upper {
+    background: #797979;
+    border-radius: 2.6px;
+  }
+  input[type=range]:focus::-ms-fill-upper {
+    background: #797979;
+  }
+
+
+#mainDiv {
+    width:95%;
+    max-width:900px;
+    margin:auto;
+    display:flex;
+    justify-content: center;
+    border: 2px solid rgb(0, 30, 87);
+    padding:6px;
+    margin-top:15px;
+    margin-bottom:15px;
+    box-shadow: 4px 4px 10px grey;
+    background-color:white;
+}
+
+.assumptionTableDiv{
+    max-width:90%;
+    width:600px;
+    padding:2px;
+}
+
+#outputDiv {
+    width: 95%;
+    max-width:900px;
+    padding:2px;
+}
+
+#afterTaxIncomeBarChartDiv, #totalTaxBarChartDiv, #avgTaxRateBarChartDiv,
+#grossIncomeBarChartDiv, #provinceChartDiv, #provinceDeltaChartDiv {
+    width:95%;
+    max-width:900px;
+    padding:6px;
+    border: 2px solid rgb(0, 30, 87);
+    background-color: white;
+    position:relative;
+    height:50vh;
+    margin: auto;
+    margin-top:15px;
+    margin-bottom:15px;
+    box-shadow: 4px 4px 10px grey;
+}
+
+#outputTextDivPrimary{
+    max-width:540px;
+    margin:auto;
+    border: 1px solid rgb(0, 30, 87);
+    padding:1%;
+    text-align:center;
+    background-color: rgb(0, 179, 140);
+    color:white;
+    margin-bottom:2px;
+    font-size:1.1em;
+    vertical-align: middle;
+}
+
+#outputTextDivSecondary {
+    max-width:540px;
+    margin:auto;
+    border: 1px solid rgb(0, 30, 87);
+    padding:1%;
+    text-align:center;
+    background-color: rgb(248, 248, 248);
+    vertical-align: middle;
+}
+
+#outputTextDivPrimary p {
+    margin:15px;
+    line-height:1;
+}
+
+#outputTextDivSecondary p {
+    margin:15px;
+    line-height:1;    
+}
+
+#fullChartDiv{
+    width:95%;
+    max-width:900px;
+    padding:6px;
+    border: 2px solid rgb(0, 30, 87);
+    background-color: white;
+    position:relative;
+    height:50vh;
+    margin: auto;
+    margin-top:15px;
+    margin-bottom:15px;
+    box-shadow: 4px 4px 10px grey;
+}
+
+.userInput1, .userInput2{
+    font-weight:bold;
+    padding:1px;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    text-align:center;
+    font-family:helvetica;
+    font-size:0.9em;
+    width: 95%;
+}
+
+input[type=number].input-number–noSpinners {
+    -moz-appearance: textfield;
+    border:1px solid rgb(180, 180, 180);
+    padding: 4px 0 4px 0;
+}
+
+input[type=number].input-number–noSpinners::-webkit-inner-spin-button,
+input[type=number].input-number–noSpinners::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    border:1px solid rgb(180, 180, 180);
+    padding: 4px 0 4px 0;
+}
+
+input[type=number]:hover{
+    background-color: rgb(246, 252, 255);
+    border:1px solid rgb(146, 146, 146);
+}
+
+.highlightText{
+    font-weight:bold;
+    font-size:1em;
+}
+
+.highlightTextBig{
+    font-weight:bold;
+    font-size:1.15em;
+    text-decoration: underline;
+}
+
+#roboToolDiv {
+    background-color: rgb(179, 179, 179);
+    padding-top:5px;
+    padding-bottom:5px;
+}
