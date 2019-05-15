@@ -13,41 +13,49 @@
     <div class="assumptionTableDiv">
         <table>
             <tr>
-                <th colspan="2">Your Income Assumptions (2019)</th>
+                <th colspan="2">Your Income Assumptions</th>
             </tr>
             <tr>
                 <td width="40%">Employment Income</td>
                 <td width="60%">
-                    <input type="number" id="employmentIncome" class="userInput1 input-number–noSpinners" value="40000" min="0" max="10000000" step="1000">
+                    <span> $ </span><input type="number" id="employmentIncome" class="userInput1 input-number–noSpinners" value="40000" min="0" max="10000000">
                 </td>
             </tr>
 
             <tr>
                 <td>Capital Gains</td>
                 <td>
-                    <input type="number" id="capitalGains" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000" step="1000">
+                    <span> $ </span><input type="number" id="capitalGains" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000">
                 </td>
             </tr>
 
             <tr>
                 <td>Eligible Canadian Dividends</td>
                 <td>
-                    <input type="number" id="eligibleDividends" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000" step="1000">
+                    <span> $ </span><input type="number" id="eligibleDividends" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000">
                 </td>
             </tr>
 
             <tr>
                 <td>Non-Eligible Dividends</td>
                 <td>
-                    <input type="number" id="nonEligibleDividends" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000" step="1000">
+                    <span> $ </span><input type="number" id="nonEligibleDividends" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000">
                 </td>
             </tr>
 
             <tr>
                 <td>Other Income</td>
                 <td>
-                    <input type="number" id="otherIncome" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000" step="1000">
+                    <span> $ </span><input type="number" id="otherIncome" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000">
                 </td>
+            </tr>
+
+            <tr id="totalPreTaxIncomeRow">
+                <td class="totalPreTaxIncomeData">Total Pre-Tax Income</td>
+                <td class="totalPreTaxIncomeData" id="totalPreTaxIncomeOutput">
+
+                </td>
+
             </tr>
         </table>
 
@@ -58,7 +66,7 @@
             <tr>
                 <td width="40%">RRSP Contribution</td>
                 <td width="60%">
-                    <input type="number" id="RRSPContribution" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000" step="1000">
+                    <span> $ </span><input type="number" id="RRSPContribution" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000">
                 </td>
             </tr>
         </table>
@@ -78,8 +86,27 @@
         <div id="avgTaxRateBarChartDiv">
             <canvas id="avgTaxRateBarChart"></canvas>
         </div>
-
     </div>
+
+    <div id="mainTableDiv">
+        <table id="mainTable">
+            <th id="header1">Province / Territory</th>
+            <th id="header2">Total Pre-Tax Income</th>
+            <th id="header3">Federal Tax</th>
+            <th id="header4">Provincial Tax</th>
+            <th id="header5">CPP</th>
+            <th id="header6">EI</th>
+            <th id="header7">QPP</th>
+            <th id="header8">QPIP</th>
+            <th id="header9">Total Taxes</th>
+            <th id="header10">After-Tax Income</th>
+            <th id="header11">Average Tax Rate</th>
+            <th id="header12">Marginal Tax Rate</th>
+        </table>
+    </div>
+
+    &nbsp;
+
 
     <h2>Analysis #2: Pre-Tax Income Calculator</h2>
 
@@ -88,7 +115,7 @@
             <tr>
                 <td width="40%">After-Tax Income</td>
                 <td width="60%">
-                    <input type="number" id="afterTaxIncomeAssumption" class="userInput2 input-number–noSpinners" value="30000" min="0" max="10000000" step="1000">
+                    <span> $ </span><input type="number" id="afterTaxIncomeAssumption" class="userInput2 input-number–noSpinners" value="30000" min="0" max="10000000" step="1000">
                 </td>
             </tr>
         </table>
@@ -100,39 +127,57 @@
         </div>
     </div>
 
+    &nbsp;
+
     <h2>Analysis #3: Provincial Comparison</h2>
 
-    <select name="regionA" class="userInput3" id="regionDropDownListA">
-        <option value="AB">AB</option>
-        <option value="BC">BC</option>
-        <option value="MB">MB</option>
-        <option value="NB">NB</option>
-        <option value="NL">NL</option>
-        <option value="NS">NS</option>
-        <option value="NT">NT</option>
-        <option value="NU">NU</option>
-        <option value="ON">ON</option>
-        <option value="PE">PE</option>
-        <option value="QC">QC</option>
-        <option value="SK">SK</option>
-        <option value="YU">YU</option>
-    </select> 
+    <div class="assumptionTableDiv">
 
-    <select name="regionB" class="userInput3" id="regionDropDownListB">
-        <option value="AB">AB</option>
-        <option value="BC">BC</option>
-        <option value="MB">MB</option>
-        <option value="NB">NB</option>
-        <option value="NL">NL</option>
-        <option value="NS">NS</option>
-        <option value="NT">NT</option>
-        <option value="NU">NU</option>
-        <option value="ON">ON</option>
-        <option value="PE">PE</option>
-        <option value="QC">QC</option>
-        <option value="SK">SK</option>
-        <option value="YU">YU</option>
-    </select> 
+        <table>
+            <tr>
+                <td>Province / Territory #1</td>
+                <td>
+                    <select name="regionA" class="userInput3" id="regionDropDownListA">
+                        <option value="AB" selected="selected">AB</option>
+                        <option value="BC">BC</option>
+                        <option value="MB">MB</option>
+                        <option value="NB">NB</option>
+                        <option value="NL">NL</option>
+                        <option value="NS">NS</option>
+                        <option value="NT">NT</option>
+                        <option value="NU">NU</option>
+                        <option value="ON">ON</option>
+                        <option value="PE">PE</option>
+                        <option value="QC">QC</option>
+                        <option value="SK">SK</option>
+                        <option value="YU">YU</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Province / Territory #2</td>
+                <td>
+                <select name="regionB" class="userInput3" id="regionDropDownListB">
+                    <option value="AB">AB</option>
+                    <option value="BC">BC</option>
+                    <option value="MB">MB</option>
+                    <option value="NB">NB</option>
+                    <option value="NL">NL</option>
+                    <option value="NS">NS</option>
+                    <option value="NT">NT</option>
+                    <option value="NU">NU</option>
+                    <option value="ON" selected="selected">ON</option>
+                    <option value="PE">PE</option>
+                    <option value="QC">QC</option>
+                    <option value="SK">SK</option>
+                    <option value="YU">YU</option>
+                </select>
+                </td>
+            </tr>
+        </table>
+
+    </div>
 
     <div id="outputDiv3">
         <div id="provinceChartDiv">
@@ -143,6 +188,9 @@
             <canvas id="provinceDeltaChart"></canvas>
         </div>
     </div>
+
+    &nbsp;
+
 
 
 

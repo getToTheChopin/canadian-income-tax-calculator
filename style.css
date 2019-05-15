@@ -1,109 +1,36 @@
 html, body {
-    font-size: 15px;
-    font-family: Helvetica, sans-serif;
+    font-family: helvetica;
+    font-size: 15;
 }
 
 th {
-    border: 1px solid rgb(0, 30, 87);
     padding: 5px;
     text-align: center;
     vertical-align:middle;
     background-color: rgb(238, 238, 238);
+	border-collapse: collapse;
+	background-color: #C4C4C4;
 }
 
 table {
     table-layout: fixed;
-    margin-top:2px;
-    margin-bottom:2px;
-    width:100%;
+    margin-top:3%;
+    margin-bottom:3%;
 	font-size:0.9em;
+	border-collapse: collapse;
+	width:500px;
+	max-width:90%;
 }
 
 td {
-    border: 1px solid rgb(0, 30, 87);
+    border-bottom: 1px solid rgb(0, 30, 87);
+	border-top: 1px solid rgb(0, 30, 87);
     padding: 5px;
     text-align: center;
     vertical-align: middle;
     background-color: white;
+	border-collapse: collapse;
 }
-
-.slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 90%;
-    outline: none; /* Remove outline */
-    text-align: center;
-    padding:0;
-    margin:0;
-    border:none !important;
-}
-
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    width: 12px; /* Set a specific slider handle width */
-    height: 12px; /* Slider handle height */
-    background: rgb(255, 131, 15);
-    cursor: pointer; /* Cursor on hover */
-    border-radius:12px;
-	border:1px solid rgb(172, 89, 12);
-	margin-top:-3px;
-}
-
-.slider::-moz-range-thumb {
-    width: 12px; /* Set a specific slider handle width */
-    height: 12px; /* Slider handle height */
-    /*background: rgb(0, 183, 255);*/
-    background: rgb(255, 131, 15);
-    cursor: pointer; /* Cursor on hover */
-    border-radius:12px;
-    border:1px solid rgb(172, 89, 12);
-}
-
-input[type=range]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 4px;
-    cursor: pointer;
-    background: #797979;
-    border-radius: 1.3px;
-  }
-  
-  input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #797979;
-  }
-  
-  input[type=range]::-moz-range-track {
-    width: 100%;
-    height: 4px;
-    cursor: pointer;
-    background: #797979;
-    border-radius: 1.3px;
-  }
-  
-  input[type=range]::-ms-track {
-    width: 100%;
-    height: 4px;
-    cursor: pointer;
-    background: transparent;
-    border-color: transparent;
-    border-width: 16px 0;
-    color: transparent;
-  }
-  input[type=range]::-ms-fill-lower {
-    background: #797979;
-    border-radius: 2.6px;
-  }
-  input[type=range]:focus::-ms-fill-lower {
-    background: #797979;
-  }
-  input[type=range]::-ms-fill-upper {
-    background: #797979;
-    border-radius: 2.6px;
-  }
-  input[type=range]:focus::-ms-fill-upper {
-    background: #797979;
-  }
 
 
 #mainDiv {
@@ -122,77 +49,30 @@ input[type=range]::-webkit-slider-runnable-track {
 
 .assumptionTableDiv{
     max-width:90%;
+	margin: auto;
+	text-align: center;
     width:600px;
     padding:2px;
 }
 
-#outputDiv {
-    width: 95%;
-    max-width:900px;
-    padding:2px;
-}
 
 #afterTaxIncomeBarChartDiv, #totalTaxBarChartDiv, #avgTaxRateBarChartDiv,
 #grossIncomeBarChartDiv, #provinceChartDiv, #provinceDeltaChartDiv {
     width:95%;
-    max-width:900px;
+    max-width:800px;
     padding:6px;
     border: 2px solid rgb(0, 30, 87);
     background-color: white;
     position:relative;
     height:50vh;
+	max-height: 600px;
     margin: auto;
+	text-align: center;
     margin-top:15px;
     margin-bottom:15px;
     box-shadow: 4px 4px 10px grey;
 }
 
-#outputTextDivPrimary{
-    max-width:540px;
-    margin:auto;
-    border: 1px solid rgb(0, 30, 87);
-    padding:1%;
-    text-align:center;
-    background-color: rgb(0, 179, 140);
-    color:white;
-    margin-bottom:2px;
-    font-size:1.1em;
-    vertical-align: middle;
-}
-
-#outputTextDivSecondary {
-    max-width:540px;
-    margin:auto;
-    border: 1px solid rgb(0, 30, 87);
-    padding:1%;
-    text-align:center;
-    background-color: rgb(248, 248, 248);
-    vertical-align: middle;
-}
-
-#outputTextDivPrimary p {
-    margin:15px;
-    line-height:1;
-}
-
-#outputTextDivSecondary p {
-    margin:15px;
-    line-height:1;    
-}
-
-#fullChartDiv{
-    width:95%;
-    max-width:900px;
-    padding:6px;
-    border: 2px solid rgb(0, 30, 87);
-    background-color: white;
-    position:relative;
-    height:50vh;
-    margin: auto;
-    margin-top:15px;
-    margin-bottom:15px;
-    box-shadow: 4px 4px 10px grey;
-}
 
 .userInput1, .userInput2{
     font-weight:bold;
@@ -203,7 +83,8 @@ input[type=range]::-webkit-slider-runnable-track {
     text-align:center;
     font-family:helvetica;
     font-size:0.9em;
-    width: 95%;
+    width: 100px;
+	max-width:80%;
 }
 
 input[type=number].input-number–noSpinners {
@@ -225,19 +106,51 @@ input[type=number]:hover{
     border:1px solid rgb(146, 146, 146);
 }
 
-.highlightText{
+
+#dropDownDiv {
+    text-align:center;
+    margin:auto;
+}
+
+#regionDropDownListA, #regionDropDownListB {
+
+	font-weight: bold;
+	padding: 4px 8px 4px 8px;
+	border-radius: 4px;
+    margin-bottom: 3px;
+    display:block;
+    text-align:center;
+    margin:auto;
+	
+}
+
+#regionDropDownListA{
+    border:2px solid #31D0CB;
+}
+
+#regionDropDownListB{
+    border:2px solid #CD5C5C;
+}
+
+#totalPreTaxIncomeRow{
     font-weight:bold;
     font-size:1em;
 }
 
-.highlightTextBig{
-    font-weight:bold;
-    font-size:1.15em;
-    text-decoration: underline;
+.totalPreTaxIncomeData {
+    border-top: 2px solid #31D0CB;
+    border-bottom: 2px solid #31D0CB;
 }
 
-#roboToolDiv {
-    background-color: rgb(179, 179, 179);
-    padding-top:5px;
-    padding-bottom:5px;
+#mainTableDiv{
+	margin: auto;
+    text-align: center;    
+    width:800px;
+    max-width:95%;
+}
+
+#mainTable{
+    font-size:0.7em;
+    width:800px;
+    max-width:95%;
 }

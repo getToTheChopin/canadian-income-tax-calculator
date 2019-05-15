@@ -304,6 +304,9 @@ var YUEligibleDivCredit = 0.1202;
 var YUNonEligibleDivCredit = 0.0230;
 var YUTaxCreditRate = 0.064;
 
+//Analysis #1
+var totalPreTaxIncomeOutput = document.getElementById("totalPreTaxIncomeOutput");
+
 //Analysis #2 Assumptions
 var netIncomeGoal = 0;
 var grossIncomeArray = [];
@@ -323,6 +326,25 @@ var provinceBNetIncomeArray = [];
 var provinceDeltaArray = [];
 
 
+//Fill Table function
+var mainTable = document.getElementById("mainTable");
+var dataLength = 13;
+var numberCol = 12;
+
+var labelArraySorted = [];
+var totalGrossIncomeArraySorted = [];
+var federalTaxArraySorted = [];
+var provincialTaxArraySorted = [];
+var CPPTaxArraySorted = [];
+var EITaxArraySorted = [];
+var QPPTaxArraySorted = [];
+var QPIPTaxArraySorted = [];
+var totalTaxesArraySorted = [];
+var netIncomeArraySorted = [];
+var avgTaxRateArraySorted = [];
+var marginalTaxRateArraySorted = [];
+
+
 
 //main method
 addInputEventListeners();
@@ -330,6 +352,7 @@ getUserInputs();
 
 calculateTaxes();
 showOutputs();
+fillTable();
 
 seekPreTaxIncome(netIncomeGoal);
 showOutputs2();
@@ -367,6 +390,8 @@ function getUserInputs(){
     nonEligibleDividends = Number(document.getElementById("nonEligibleDividends").value);
     otherIncome = Number(document.getElementById("otherIncome").value);
     RRSPContribution = Number(document.getElementById("RRSPContribution").value);
+
+    totalPreTaxIncomeOutput.innerHTML = "$"+(employmentIncome + capitalGains + eligibleDividends + nonEligibleDividends + otherIncome).toLocaleString();
 
     totalTaxableIncome = employmentIncome + capitalGains * capitalGainsRate + eligibleDividends * (1+eligibleGrossUp) + nonEligibleDividends * (1+nonEligibleGrossUp) + otherIncome - RRSPContribution;
 
@@ -467,7 +492,7 @@ function showOutputs(){
 
 
     //rank after-tax income array
-    var netIncomeArraySorted = netIncomeArray.slice(0);
+    netIncomeArraySorted = netIncomeArray.slice(0);
 
     netIncomeArraySorted.sort(function(a,b){
         return a - b
@@ -490,17 +515,17 @@ function showOutputs(){
     console.log("Net income array sorted: "+netIncomeArraySorted);
 
     //create new output arrays and sort by order of after-tax income
-    var labelArraySorted = sortArrayByRank(labelArray, netIncomeRankOrder);
-    var totalGrossIncomeArraySorted = sortArrayByRank(totalGrossIncomeArray, netIncomeRankOrder);
-    var federalTaxArraySorted = sortArrayByRank(federalTaxArray, netIncomeRankOrder);
-    var provincialTaxArraySorted = sortArrayByRank(provincialTaxArray, netIncomeRankOrder);
-    var CPPTaxArraySorted = sortArrayByRank(CPPTaxArray, netIncomeRankOrder);
-    var EITaxArraySorted = sortArrayByRank(EITaxArray, netIncomeRankOrder);
-    var QPPTaxArraySorted = sortArrayByRank(QPPTaxArray, netIncomeRankOrder);
-    var QPIPTaxArraySorted = sortArrayByRank(QPIPTaxArray, netIncomeRankOrder);
-    var totalTaxesArraySorted = sortArrayByRank(totalTaxesArray, netIncomeRankOrder);
-    var avgTaxRateArraySorted = sortArrayByRank(avgTaxRateArray, netIncomeRankOrder);
-    var marginalTaxRateArraySorted = sortArrayByRank(marginalTaxRateArray, netIncomeRankOrder);
+    labelArraySorted = sortArrayByRank(labelArray, netIncomeRankOrder);
+    totalGrossIncomeArraySorted = sortArrayByRank(totalGrossIncomeArray, netIncomeRankOrder);
+    federalTaxArraySorted = sortArrayByRank(federalTaxArray, netIncomeRankOrder);
+    provincialTaxArraySorted = sortArrayByRank(provincialTaxArray, netIncomeRankOrder);
+    CPPTaxArraySorted = sortArrayByRank(CPPTaxArray, netIncomeRankOrder);
+    EITaxArraySorted = sortArrayByRank(EITaxArray, netIncomeRankOrder);
+    QPPTaxArraySorted = sortArrayByRank(QPPTaxArray, netIncomeRankOrder);
+    QPIPTaxArraySorted = sortArrayByRank(QPIPTaxArray, netIncomeRankOrder);
+    totalTaxesArraySorted = sortArrayByRank(totalTaxesArray, netIncomeRankOrder);
+    avgTaxRateArraySorted = sortArrayByRank(avgTaxRateArray, netIncomeRankOrder);
+    marginalTaxRateArraySorted = sortArrayByRank(marginalTaxRateArray, netIncomeRankOrder);
 
     console.log("Label array (unsorted): "+labelArray);
     console.log("Label array (sorted): "+labelArraySorted);
@@ -880,6 +905,16 @@ function refreshAnalysis1(){
     getUserInputs();
     calculateTaxes();
     showOutputs();
+
+    var tableRows = mainTable.getElementsByTagName('tr');
+    var rowCount = tableRows.length;
+
+    //delete all table rows ex header
+    for (var x=rowCount-1; x>0; x--) {
+        mainTable.removeChild(tableRows[x]);
+    }
+    
+    fillTable();
 }
 
 
@@ -1883,8 +1918,8 @@ function showOutputs3(){
             datasets: [
                 {
                     label: provinceA,
-                    borderColor: "blue",
-                    pointBackgroundColor: "blue",
+                    borderColor: "#31D0CB",
+                    pointBackgroundColor: "#31D0CB",
                     fill: false,
                     data: provinceANetIncomeArray,
                     pointHitRadius: 5,
@@ -1894,8 +1929,8 @@ function showOutputs3(){
                 
                 {
                     label: provinceB,
-                    borderColor: "red",
-                    pointBackgroundColor: "red",
+                    borderColor: "#CD5C5C",
+                    pointBackgroundColor: "#CD5C5C",
                     fill: false,
                     data: provinceBNetIncomeArray,
                     pointHitRadius: 5,
@@ -1956,8 +1991,11 @@ function showOutputs3(){
                 xAxes: [{
                     ticks: {
                         fontColor: "rgb(56,56,56)",
-                        stepSize: 10000,
-
+                        maxTicksLimit:15,
+                        min:0,
+                        max:300000,
+                        minRotation:90,
+                        maxRotation:90,
                         callback: function(value, index, values) {
                             return '$' + Math.round(value).toLocaleString();
                         },
@@ -2003,12 +2041,6 @@ function showOutputs3(){
 
                     display: false,
 
-                    color: "#555555",
-
-                    anchor: "end",
-                    align: "end",
-
-                    clamp: true,
                 }
             }
 
@@ -2027,8 +2059,8 @@ function showOutputs3(){
             datasets: [
                 {
                     label: "Difference in after-tax income",
-                    borderColor: "green",
-                    pointBackgroundColor: "green",
+                    borderColor: "#e71a8c",
+                    pointBackgroundColor: "#e71a8c",
                     fill: false,
                     data: provinceDeltaArray,
                     pointHitRadius: 5,
@@ -2053,8 +2085,14 @@ function showOutputs3(){
                         if (label) {
                             label += ': ';
                         }
-                        label += '$'+Math.round(tooltipItem.yLabel).toLocaleString();
-                        return label;
+                        
+                        if(tooltipItem.yLabel >= 0){
+                            label += '$'+Math.round(tooltipItem.yLabel).toLocaleString();
+                            return label;
+                        } else{
+                            label += '-$'+Math.round(tooltipItem.yLabel*-1).toLocaleString();
+                            return label;                           
+                        }
                     }
                 },
             },
@@ -2064,7 +2102,11 @@ function showOutputs3(){
                     ticks: {
                         // Include a dollar sign in the ticks and add comma formatting
                         callback: function(value, index, values) {
-                            return '$' + Math.round(value).toLocaleString();
+                            if(value>=0){
+                                return '$' + Math.round(value).toLocaleString();
+                            }else{
+                                return '-$' + Math.round(value*-1).toLocaleString();
+                            }
                         },
 
 
@@ -2094,7 +2136,12 @@ function showOutputs3(){
                         },
                         
                         fontColor: "rgb(56,56,56)",
-                        stepSize: 10000,
+
+                        maxTicksLimit:15,
+                        min:0,
+                        max:300000,
+                        minRotation:90,
+                        maxRotation:90,
                     },
 
                     scaleLabel: {
@@ -2137,12 +2184,6 @@ function showOutputs3(){
 
                     display: false,
 
-                    color: "#555555",
-
-                    anchor: "end",
-                    align: "end",
-
-                    clamp: true,
                 }
             }
 
@@ -2158,4 +2199,75 @@ function executeFunctionByName(functionName, context /*, args */) {
         context = context[namespaces[i]];
     }
     return context[func].apply(context, args);
+}
+
+
+function fillTable(){
+
+    for(i=0; i<dataLength; i++){
+        console.log("add new table row");
+        var tableRow = document.createElement('tr');
+        
+        tableRow.setAttribute('id','row'+(i+1));
+        mainTable.appendChild(tableRow);
+
+        for(j=0; j<numberCol; j++){
+
+            console.log("add new table data");
+
+            var tableCell = document.createElement('td');
+            tableCell.classList.add("tableCell");
+            tableCell.setAttribute('id','row'+(i+1)+'col'+(j+1));
+            tableRow.appendChild(tableCell);
+
+            if(j==0){
+                tableCell.innerHTML = labelArraySorted[i];
+            }
+
+            if(j==1){
+                tableCell.innerHTML = "$"+Math.round(totalGrossIncomeArraySorted[i]).toLocaleString();     
+            }
+
+            if(j==2){
+                tableCell.innerHTML = "$"+Math.round(federalTaxArraySorted[i]).toLocaleString();                           
+            }
+
+            if(j==3){
+                tableCell.innerHTML = "$"+Math.round(provincialTaxArraySorted[i]).toLocaleString();                                            
+            }
+
+            if(j==4){
+                tableCell.innerHTML = "$"+Math.round(CPPTaxArraySorted[i]).toLocaleString();
+            }
+
+            if(j==5){
+                tableCell.innerHTML = "$"+Math.round(EITaxArraySorted[i]).toLocaleString();
+
+            }
+
+            if(j==6){
+                tableCell.innerHTML = "$"+Math.round(QPPTaxArraySorted[i]).toLocaleString();             
+            }
+
+            if(j==7){
+                tableCell.innerHTML = "$"+Math.round(QPIPTaxArraySorted[i]).toLocaleString();
+            }
+
+            if(j==8){
+                tableCell.innerHTML = "$"+Math.round(totalTaxesArraySorted[i]).toLocaleString();
+            }
+
+            if(j==9){
+                tableCell.innerHTML = "$"+Math.round(netIncomeArraySorted[i]).toLocaleString();          
+            }
+
+            if(j==10){
+                tableCell.innerHTML = Math.round(avgTaxRateArraySorted[i]*1000)/10+"%";
+            }
+
+            if(j==11){
+                tableCell.innerHTML = Math.round(marginalTaxRateArraySorted[i]*1000)/10+"%";
+            }
+        }
+    }
 }
