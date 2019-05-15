@@ -1117,7 +1117,7 @@ function calculateBC(){
     BCBracket2Amount = (Math.min(Math.max(0,totalTaxableIncome),BCBracket2)-BCBracket1Amount);
     BCBracket3Amount = (Math.min(Math.max(0,totalTaxableIncome),BCBracket3)-BCBracket1Amount-BCBracket2Amount);
     BCBracket4Amount = (Math.min(Math.max(0,totalTaxableIncome),BCBracket4)-BCBracket1Amount-BCBracket2Amount-BCBracket3Amount);
-    BCBracket5Amount = (Math.min(Math.max(0,totalTaxableIncome),BCBracket4)-BCBracket1Amount-BCBracket2Amount-BCBracket3Amount-BCBracket4Amount);
+    BCBracket5Amount = (Math.min(Math.max(0,totalTaxableIncome),BCBracket5)-BCBracket1Amount-BCBracket2Amount-BCBracket3Amount-BCBracket4Amount);
     BCBracket6Amount = (Math.max(0,totalTaxableIncome)-BCBracket1Amount-BCBracket2Amount-BCBracket3Amount-BCBracket4Amount-BCBracket5Amount);
 
     BCBracket1Tax = BCBracket1Amount * BCRate1;
