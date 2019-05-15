@@ -1,4 +1,4 @@
-var employmentIncome = 18000;
+var employmentIncome = 0;
 var capitalGains = 0;
 var eligibleDividends = 0;
 var nonEligibleDividends = 0;
@@ -913,7 +913,7 @@ function refreshAnalysis1(){
     for (var x=rowCount-1; x>0; x--) {
         mainTable.removeChild(tableRows[x]);
     }
-    
+
     fillTable();
 }
 
