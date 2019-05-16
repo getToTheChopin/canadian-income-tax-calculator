@@ -110,7 +110,7 @@ var federalPersonalAmount = 12069;
 var federalEligibleDivCredit = 0.150198;
 var federalNonEligibleDivCredit = 0.090301;
 var federalTaxCreditRate = 0.15;
-var federalEmploymentAmount = 1222;
+var federalEmploymentAmount = 0;
 
 var QCAbatementRate = 0.165;
 
@@ -394,6 +394,8 @@ function getUserInputs(){
     totalPreTaxIncomeOutput.innerHTML = "$"+(employmentIncome + capitalGains + eligibleDividends + nonEligibleDividends + otherIncome).toLocaleString();
 
     totalTaxableIncome = employmentIncome + capitalGains * capitalGainsRate + eligibleDividends * (1+eligibleGrossUp) + nonEligibleDividends * (1+nonEligibleGrossUp) + otherIncome - RRSPContribution;
+
+    federalEmploymentAmount = Math.min(1222,employmentIncome);
 
     //Analysis #2
     netIncomeGoal = Number(document.getElementById("afterTaxIncomeAssumption").value);
@@ -1000,26 +1002,26 @@ function calculateQPIP(){
 
 function calculateOHIP(){
     //OHIP
-    if(employmentIncome < 20000){
+    if(totalTaxableIncome < 20000){
         OHIPContribution = 0;
-    } else if(employmentIncome < 25000){
-        OHIPContribution = (employmentIncome - 20000) * 0.06;
-    } else if(employmentIncome < 36000){
+    } else if(totalTaxableIncome < 25000){
+        OHIPContribution = (totalTaxableIncome - 20000) * 0.06;
+    } else if(totalTaxableIncome < 36000){
         OHIPContribution = 300;
-    } else if(employmentIncome < 38500){
-        OHIPContribution = 300 + (employmentIncome - 36000) * 0.06;
-    } else if(employmentIncome < 48000){
+    } else if(totalTaxableIncome < 38500){
+        OHIPContribution = 300 + (totalTaxableIncome - 36000) * 0.06;
+    } else if(totalTaxableIncome < 48000){
         OHIPContribution = 450;
-    } else if(employmentIncome < 48600){
-        OHIPContribution = 450 + (employmentIncome - 48000) * 0.25;
-    } else if(employmentIncome < 72000){
+    } else if(totalTaxableIncome < 48600){
+        OHIPContribution = 450 + (totalTaxableIncome - 48000) * 0.25;
+    } else if(totalTaxableIncome < 72000){
         OHIPContribution = 600;
-    } else if(employmentIncome < 72600){
-        OHIPContribution = 600 + (employmentIncome - 72000) * 0.25;
-    } else if(employmentIncome < 200000){
+    } else if(totalTaxableIncome < 72600){
+        OHIPContribution = 600 + (totalTaxableIncome - 72000) * 0.25;
+    } else if(totalTaxableIncome < 200000){
         OHIPContribution = 750;
-    } else if(employmentIncome < 200600){
-        OHIPContribution = 750 + (employmentIncome - 200000) * 0.25;
+    } else if(totalTaxableIncome < 200600){
+        OHIPContribution = 750 + (totalTaxableIncome - 200000) * 0.25;
     } else {
         OHIPContribution = 900;
     }
@@ -1355,7 +1357,7 @@ function calculateON(){
     
     var ONTaxCredits2 = eligibleDividends * (1+eligibleGrossUp) * ONEligibleDivCredit + nonEligibleDividends * (1+nonEligibleGrossUp) * ONNonEligibleDivCredit;
     
-    ONTax = Math.max(ONTaxBeforeSurtax + ONSurtax - ONTaxCredits2 + OHIPContribution,0);
+    ONTax = Math.max(ONTaxBeforeSurtax + ONSurtax - ONTaxCredits2,0) + OHIPContribution;
 }
 
 
@@ -1971,6 +1973,8 @@ function showOutputs3(){
 
 
                         fontColor: "rgb(56,56,56)",
+                        max:200000,
+                        min:0,
                     },
 
                     scaleLabel: {
