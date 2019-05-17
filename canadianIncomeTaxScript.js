@@ -60,6 +60,7 @@ var provincialTaxArray = [];
 var CPPTaxArray = [];
 var EITaxArray = [];
 var QPPTaxArray = [];
+var CPPQPPTaxArray = []; 
 var QPIPTaxArray = [];
 var totalTaxesArray = [];
 var netIncomeArray = [];
@@ -329,7 +330,7 @@ var provinceDeltaArray = [];
 //Fill Table function
 var mainTable = document.getElementById("mainTable");
 var dataLength = 13;
-var numberCol = 12;
+var numberCol = 11;
 
 var labelArraySorted = [];
 var totalGrossIncomeArraySorted = [];
@@ -338,6 +339,7 @@ var provincialTaxArraySorted = [];
 var CPPTaxArraySorted = [];
 var EITaxArraySorted = [];
 var QPPTaxArraySorted = [];
+var CPPQPPTaxArraySorted = [];
 var QPIPTaxArraySorted = [];
 var totalTaxesArraySorted = [];
 var netIncomeArraySorted = [];
@@ -486,6 +488,7 @@ function showOutputs(){
     CPPTaxArray=[CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,"n/a",CPPTax,CPPTax];
     EITaxArray=[EITaxROC,EITaxROC,EITaxROC,EITaxROC,EITaxROC,EITaxROC,EITaxROC,EITaxROC,EITaxROC,EITaxROC,EITaxQC,EITaxROC,EITaxROC];
     QPPTaxArray=["n/a","n/a","n/a","n/a","n/a","n/a","n/a","n/a","n/a","n/a",QPPTax,"n/a","n/a",];
+    CPPQPPTaxArray=[CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,QPPTax,CPPTax,CPPTax];
     QPIPTaxArray=["n/a","n/a","n/a","n/a","n/a","n/a","n/a","n/a","n/a","n/a",QPIPTax,"n/a","n/a",];
     totalTaxesArray=[totalABTaxes,totalBCTaxes,totalMBTaxes,totalNBTaxes,totalNLTaxes,totalNTTaxes,totalNSTaxes,totalNUTaxes,totalONTaxes,totalPETaxes,totalQCTaxes,totalSKTaxes,totalYUTaxes];
     netIncomeArray=[netIncomeAB,netIncomeBC,netIncomeMB,netIncomeNB,netIncomeNL,netIncomeNT,netIncomeNS,netIncomeNU,netIncomeON,netIncomePE,netIncomeQC,netIncomeSK,netIncomeYU];
@@ -512,10 +515,6 @@ function showOutputs(){
         netIncomeArraySortedCopy[netIncomeRankOrder[i]] = "n/a";
     }
 
-    console.log("Net income array: "+netIncomeArray);
-    console.log("Net income rank: "+netIncomeRankOrder);
-    console.log("Net income array sorted: "+netIncomeArraySorted);
-
     //create new output arrays and sort by order of after-tax income
     labelArraySorted = sortArrayByRank(labelArray, netIncomeRankOrder);
     totalGrossIncomeArraySorted = sortArrayByRank(totalGrossIncomeArray, netIncomeRankOrder);
@@ -524,26 +523,11 @@ function showOutputs(){
     CPPTaxArraySorted = sortArrayByRank(CPPTaxArray, netIncomeRankOrder);
     EITaxArraySorted = sortArrayByRank(EITaxArray, netIncomeRankOrder);
     QPPTaxArraySorted = sortArrayByRank(QPPTaxArray, netIncomeRankOrder);
+    CPPQPPTaxArraySorted = sortArrayByRank(CPPQPPTaxArray, netIncomeRankOrder);
     QPIPTaxArraySorted = sortArrayByRank(QPIPTaxArray, netIncomeRankOrder);
     totalTaxesArraySorted = sortArrayByRank(totalTaxesArray, netIncomeRankOrder);
     avgTaxRateArraySorted = sortArrayByRank(avgTaxRateArray, netIncomeRankOrder);
     marginalTaxRateArraySorted = sortArrayByRank(marginalTaxRateArray, netIncomeRankOrder);
-
-    console.log("Label array (unsorted): "+labelArray);
-    console.log("Label array (sorted): "+labelArraySorted);
-    
-    console.log("Total gross income: "+totalGrossIncomeArraySorted);
-    console.log("Federal tax: "+federalTaxArraySorted);
-    console.log("Provincial tax: "+provincialTaxArraySorted);
-    console.log("CPP tax: "+CPPTaxArraySorted);
-    console.log("EI tax: "+EITaxArraySorted);
-    console.log("QPP tax: "+QPPTaxArraySorted);
-    console.log("QPIP tax: "+QPIPTaxArraySorted);   
-    console.log("Total taxes: "+totalTaxesArraySorted);
-    console.log("After-tax income: "+netIncomeArraySorted);
-    console.log("Average tax rate: "+avgTaxRateArraySorted);
-    console.log("Marginal tax rate: "+marginalTaxRateArraySorted);
-
 
     //draw bar chart for after-tax income and total taxes paid
     var ctx = afterTaxIncomeBarChart.getContext('2d');
@@ -617,6 +601,7 @@ function showOutputs(){
                         autoSkip: false,
                         fontSize: 12,
                         fontColor: "rgb(56,56,56)",
+                        fontStyle: "bold",
                     },
 
                     scaleLabel: {
@@ -734,6 +719,7 @@ function showOutputs(){
                         autoSkip: false,
                         fontSize: 12,
                         fontColor: "rgb(56,56,56)",
+                        fontStyle: "bold",
                     },
 
                     scaleLabel: {
@@ -851,6 +837,7 @@ function showOutputs(){
                         autoSkip: false,
                         fontSize: 12,
                         fontColor: "rgb(56,56,56)",
+                        fontStyle: "bold",
                     },
 
                     scaleLabel: {
@@ -1481,10 +1468,6 @@ function calculateYU(){
 }
 
 
-
-
-
-
 function seekPreTaxIncome(netIncomeGoal){
 
     var maxLoops = 5000;
@@ -1697,7 +1680,6 @@ function seekPreTaxIncome(netIncomeGoal){
 
     grossIncomeArray = [ABGrossIncome,BCGrossIncome,MBGrossIncome,NBGrossIncome,NLGrossIncome,NTGrossIncome,NSGrossIncome,NUGrossIncome,ONGrossIncome,PEGrossIncome,QCGrossIncome,SKGrossIncome,YUGrossIncome];
     
-    console.log("Pre-tax income needed to generate "+netIncomeGoal+" of after-tax income: "+grossIncomeArray);
 }
 
 function showOutputs2(){
@@ -1718,9 +1700,6 @@ function showOutputs2(){
         grossIncomeArraySortedCopy[grossIncomeRankOrder[i]] = "n/a";
     }
 
-    console.log("Gross income array: "+grossIncomeArray);
-    console.log("Gross income rank: "+grossIncomeRankOrder);
-    console.log("Gross income array sorted: "+grossIncomeArraySorted);
 
     //generate label array sorted by gross income order
     var labelArraySorted2 = sortArrayByRank(labelArray,grossIncomeRankOrder);
@@ -1797,6 +1776,7 @@ function showOutputs2(){
                         autoSkip: false,
                         fontSize: 12,
                         fontColor: "rgb(56,56,56)",
+                        fontStyle: "bold",
                     },
 
                     scaleLabel: {
@@ -1899,9 +1879,6 @@ function provinceComparison(a,b){
         provinceDeltaArray[i] = provinceANetIncomeArray[i] - provinceBNetIncomeArray[i];
 
     }
-
-    console.log("A string array: "+provinceANetIncomeArray);
-    console.log("B string array: "+provinceBNetIncomeArray);
 
 }
 
@@ -2209,18 +2186,14 @@ function executeFunctionByName(functionName, context /*, args */) {
 function fillTable(){
 
     for(i=0; i<dataLength; i++){
-        console.log("add new table row");
         var tableRow = document.createElement('tr');
         
         tableRow.setAttribute('id','row'+(i+1));
         mainTable.appendChild(tableRow);
 
         for(j=0; j<numberCol; j++){
-
-            console.log("add new table data");
-
             var tableCell = document.createElement('td');
-            tableCell.classList.add("tableCell");
+            tableCell.classList.add("column"+j);
             tableCell.setAttribute('id','row'+(i+1)+'col'+(j+1));
             tableRow.appendChild(tableCell);
 
@@ -2228,49 +2201,84 @@ function fillTable(){
                 tableCell.innerHTML = labelArraySorted[i];
             }
 
-            if(j==1){
-                tableCell.innerHTML = "$"+Math.round(totalGrossIncomeArraySorted[i]).toLocaleString();     
+            if(j==1){               
+                if(isNaN(totalGrossIncomeArraySorted[i])){
+                    tableCell.innerHTML = "n/a";
+                }else{
+                    tableCell.innerHTML = "$"+Math.round(totalGrossIncomeArraySorted[i]).toLocaleString();
+                }                
             }
 
             if(j==2){
-                tableCell.innerHTML = "$"+Math.round(federalTaxArraySorted[i]).toLocaleString();                           
+                if(isNaN(federalTaxArraySorted[i])){
+                    tableCell.innerHTML = "n/a";
+                }else{
+                    tableCell.innerHTML = "$"+Math.round(federalTaxArraySorted[i]).toLocaleString();
+                }  
             }
 
             if(j==3){
-                tableCell.innerHTML = "$"+Math.round(provincialTaxArraySorted[i]).toLocaleString();                                            
+                if(isNaN(provincialTaxArraySorted[i])){
+                    tableCell.innerHTML = "n/a";
+                }else{
+                    tableCell.innerHTML = "$"+Math.round(provincialTaxArraySorted[i]).toLocaleString();
+                }                                  
             }
 
             if(j==4){
-                tableCell.innerHTML = "$"+Math.round(CPPTaxArraySorted[i]).toLocaleString();
+                if(isNaN(CPPQPPTaxArraySorted[i])){
+                    tableCell.innerHTML = "n/a";
+                }else{
+                    tableCell.innerHTML = "$"+Math.round(CPPQPPTaxArraySorted[i]).toLocaleString();
+                }   
             }
 
             if(j==5){
-                tableCell.innerHTML = "$"+Math.round(EITaxArraySorted[i]).toLocaleString();
-
+                if(isNaN(EITaxArraySorted[i])){
+                    tableCell.innerHTML = "n/a";
+                }else{
+                    tableCell.innerHTML = "$"+Math.round(EITaxArraySorted[i]).toLocaleString();
+                }  
             }
 
             if(j==6){
-                tableCell.innerHTML = "$"+Math.round(QPPTaxArraySorted[i]).toLocaleString();             
+                if(isNaN(QPIPTaxArraySorted[i])){
+                    tableCell.innerHTML = "n/a";
+                }else{
+                    tableCell.innerHTML = "$"+Math.round(QPIPTaxArraySorted[i]).toLocaleString();
+                }  
             }
 
             if(j==7){
-                tableCell.innerHTML = "$"+Math.round(QPIPTaxArraySorted[i]).toLocaleString();
+                if(isNaN(totalTaxesArraySorted[i])){
+                    tableCell.innerHTML = "n/a";
+                }else{
+                    tableCell.innerHTML = "$"+Math.round(totalTaxesArraySorted[i]).toLocaleString();
+                }                
             }
 
             if(j==8){
-                tableCell.innerHTML = "$"+Math.round(totalTaxesArraySorted[i]).toLocaleString();
+                if(isNaN(netIncomeArraySorted[i])){
+                    tableCell.innerHTML = "n/a";
+                }else{
+                    tableCell.innerHTML = "$"+Math.round(netIncomeArraySorted[i]).toLocaleString();
+                }  
             }
 
             if(j==9){
-                tableCell.innerHTML = "$"+Math.round(netIncomeArraySorted[i]).toLocaleString();          
+                if(isNaN(avgTaxRateArraySorted[i])){
+                    tableCell.innerHTML = "n/a";
+                }else{
+                    tableCell.innerHTML = (Math.round(avgTaxRateArraySorted[i]*1000)/10).toLocaleString()+"%";
+                }                
             }
 
             if(j==10){
-                tableCell.innerHTML = Math.round(avgTaxRateArraySorted[i]*1000)/10+"%";
-            }
-
-            if(j==11){
-                tableCell.innerHTML = Math.round(marginalTaxRateArraySorted[i]*1000)/10+"%";
+                if(isNaN(marginalTaxRateArraySorted[i])){
+                    tableCell.innerHTML = "n/a";
+                }else{
+                    tableCell.innerHTML = (Math.round(marginalTaxRateArraySorted[i]*1000)/10).toLocaleString()+"%";
+                }  
             }
         }
     }

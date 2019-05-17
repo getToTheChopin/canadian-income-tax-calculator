@@ -94,14 +94,13 @@
             <th id="header2">Total Pre-Tax Income</th>
             <th id="header3">Federal Tax</th>
             <th id="header4">Provincial Tax</th>
-            <th id="header5">CPP</th>
+            <th id="header5">CPP / QPP</th>
             <th id="header6">EI</th>
-            <th id="header7">QPP</th>
-            <th id="header8">QPIP</th>
-            <th id="header9">Total Taxes</th>
-            <th id="header10">After-Tax Income</th>
-            <th id="header11">Average Tax Rate</th>
-            <th id="header12">Marginal Tax Rate</th>
+            <th id="header7">QPIP</th>
+            <th id="header8">Total Taxes</th>
+            <th id="header9">After-Tax Income</th>
+            <th id="header10">Average Tax Rate</th>
+            <th id="header11">Marginal Tax Rate</th>
         </table>
     </div>
 
@@ -113,8 +112,8 @@
     <div class="assumptionTableDiv">
         <table>
             <tr>
-                <td width="40%">After-Tax Income</td>
-                <td width="60%">
+                <td width="40%" id="analysis2Label">After-Tax Income</td>
+                <td width="60%" id="analysis2Assumption">
                     <span> $ </span><input type="number" id="afterTaxIncomeAssumption" class="userInput2 input-number–noSpinners" value="40000" min="0" max="10000000" step="1000">
                 </td>
             </tr>
@@ -135,8 +134,8 @@
 
         <table>
             <tr>
-                <td>Province / Territory #1</td>
-                <td>
+                <td class="analysis3Assumption">Province / Territory #1</td>
+                <td class="analysis3Assumption">
                     <select name="regionA" class="userInput3" id="regionDropDownListA">
                         <option value="AB" selected="selected">AB</option>
                         <option value="BC">BC</option>
@@ -156,8 +155,8 @@
             </tr>
 
             <tr>
-                <td>Province / Territory #2</td>
-                <td>
+                <td class="analysis3Assumption">Province / Territory #2</td>
+                <td class="analysis3Assumption">
                 <select name="regionB" class="userInput3" id="regionDropDownListB">
                     <option value="AB">AB</option>
                     <option value="BC">BC</option>
