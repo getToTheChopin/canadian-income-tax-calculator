@@ -19,6 +19,7 @@ table {
 	font-size:0.9em;
     border-collapse: collapse;
     width:450px;
+    max-width:100%;
 }
 
 td {
