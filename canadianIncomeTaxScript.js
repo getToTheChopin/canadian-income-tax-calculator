@@ -308,6 +308,11 @@ var YUTaxCreditRate = 0.064;
 //Analysis #1
 var totalPreTaxIncomeOutput = document.getElementById("totalPreTaxIncomeOutput");
 
+//Income Description
+var moreInfoSwitch = 0;
+var moreInfoButton = document.getElementById("moreInfoButton");
+var incomeDescriptionDiv = document.getElementById("incomeDescriptionDiv");
+
 //Analysis #2 Assumptions
 var netIncomeGoal = 0;
 var grossIncomeArray = [];
@@ -2282,4 +2287,19 @@ function fillTable(){
             }
         }
     }
+}
+
+function displayMoreInfo(){
+
+
+    if(moreInfoSwitch==0){
+        moreInfoSwitch = 1;
+        incomeDescriptionDiv.classList.remove("hide");
+        moreInfoButton.innerHTML = "&#9447;"
+    } else{
+        moreInfoSwitch = 0;
+        incomeDescriptionDiv.classList.add("hide");
+        moreInfoButton.innerHTML = "&#9432;"
+    }
+
 }
