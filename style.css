@@ -192,15 +192,16 @@ input[type=number]:hover{
 }
 
 #moreInfoButton{
-    font-size:1.4em;
+    font-size:1.2em;
     color: rgb(77, 77, 77);
     cursor: pointer;
 }
 
 #incomeDescriptionDiv{
     font-size:0.8em;
-    padding:3%;
-
+    padding: 1%;
+    margin:1%;
+    border: 1px dotted gray;
 }
 
 .hide{
