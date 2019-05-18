@@ -18,8 +18,7 @@ table {
     margin-bottom:3%;
 	font-size:0.9em;
     border-collapse: collapse;
-    width:450px;
-    max-width:100%;
+    width:350px;
 }
 
 td {
@@ -36,8 +35,7 @@ td {
 	margin: auto;
 	text-align: center;
     padding:2px;
-    width:500px;
-	max-width:90%;
+    width:350px;
 }
 
 #afterTaxIncomeBarChartDiv, #totalTaxBarChartDiv, #avgTaxRateBarChartDiv,
@@ -109,11 +107,13 @@ input[type=number]:hover{
 }
 
 #regionDropDownListA{
-    border:2px solid #31D0CB;
+    border:2px solid #0071B3;
+	color: #0071B3;
 }
 
 #regionDropDownListB{
-    border:2px solid #CD5C5C;
+    border:2px solid #B31B20;
+	color: #B31B20;
 }
 
 #totalPreTaxIncomeRow{
@@ -126,17 +126,33 @@ input[type=number]:hover{
     border-bottom: 2px solid #31D0CB;
 }
 
+
+
+/* css as usual */
 #mainTableDiv{
 	margin: auto;
     text-align: center;    
-    width:800px;
-    max-width:95%;
+    width:500px;
 }
 
 #mainTable{
-    font-size:0.7em;
-    width:800px;
-    max-width:95%;
+    font-size:0.55em;
+    width:500px;
+}
+
+/* conditional for screen size minimum of 500px */
+@media (min-width:700px) {
+  /* your conditional / responsive CSS inside this condition */
+    #mainTableDiv{
+	    margin: auto;
+        text-align: center;    
+        width:700px;
+    }  
+  
+    #mainTable{
+        font-size:0.75em;
+        width:700px;
+    }
 }
 
 .column0{

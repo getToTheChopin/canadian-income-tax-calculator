@@ -1897,8 +1897,8 @@ function showOutputs3(){
             datasets: [
                 {
                     label: provinceA,
-                    borderColor: "#31D0CB",
-                    pointBackgroundColor: "#31D0CB",
+                    borderColor: "#0071B3",
+                    pointBackgroundColor: "#0071B3",
                     fill: false,
                     data: provinceANetIncomeArray,
                     pointHitRadius: 5,
@@ -1908,8 +1908,8 @@ function showOutputs3(){
                 
                 {
                     label: provinceB,
-                    borderColor: "#CD5C5C",
-                    pointBackgroundColor: "#CD5C5C",
+                    borderColor: "#B31B20",
+                    pointBackgroundColor: "#B31B20",
                     fill: false,
                     data: provinceBNetIncomeArray,
                     pointHitRadius: 5,
