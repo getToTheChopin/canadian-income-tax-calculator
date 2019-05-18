@@ -129,31 +129,52 @@ input[type=number]:hover{
 
 
 /* css as usual */
-#mainTableDiv{
-	margin: auto;
-    text-align: center;    
-    width:500px;
-}
-
 #mainTable{
+    margin:auto;
     font-size:0.55em;
-    width:500px;
+    overflow-x:scroll;
+    width:95%;
+    max-width:950px;
+    display:block;
 }
 
 /* conditional for screen size minimum of 500px */
 @media (min-width:700px) {
   /* your conditional / responsive CSS inside this condition */
-    #mainTableDiv{
-	    margin: auto;
-        text-align: center;    
-        width:700px;
-    }  
   
     #mainTable{
+        margin:auto;
         font-size:0.75em;
-        width:700px;
+        overflow-x:scroll;
+        width:95%;
+        max-width:950px;
+        display:block;
     }
 }
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+::-webkit-scrollbar:vertical {
+    width: 12px;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;  
+    background-color: #ffffff; 
+}
+
 
 .column0{
     font-size:1.1em;
