@@ -326,6 +326,8 @@ var grossIncomeBarChart = document.getElementById("grossIncomeBarChart");
 var provinceA = "AB";
 var provinceB = "BC";
 
+var analysis3Para = document.getElementById("analysis3Para");
+
 var grossIncomeLabelArray = [];
 var provinceANetIncomeArray = [];
 var provinceBNetIncomeArray = [];
@@ -1890,6 +1892,8 @@ function provinceComparison(a,b){
 
 function showOutputs3(){
 
+    analysis3Para.innerHTML = "For the chart below, positive values indicate that after-tax income is higher in "+provinceA+", while negative values mean that after-tax income is higher in "+provinceB+".";
+
     var ctx5 = document.getElementById('provinceChart').getContext('2d');
 
     chart5 = new Chart(ctx5, {
@@ -2013,7 +2017,7 @@ function showOutputs3(){
 
             title: {
                 display: true,
-                text: "Province Comparison: "+provinceA+" vs "+provinceB,
+                text: "After-Tax Income: "+provinceA+" vs "+provinceB,
                 fontSize: 18,
                 fontColor: "rgb(56,56,56)",
                 padding: 2,
@@ -2156,7 +2160,7 @@ function showOutputs3(){
 
             title: {
                 display: true,
-                text: "Province Comparison: "+provinceA+" vs "+provinceB,
+                text: "Difference in After-Tax Income: "+provinceA+" vs "+provinceB,
                 fontSize: 18,
                 fontColor: "rgb(56,56,56)",
                 padding: 2,

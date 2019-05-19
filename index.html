@@ -8,7 +8,22 @@
 <body>
     <h1>Canadian Income Tax Calculator</h1>
 
-    <h2>Analysis #1: After-Tax Income Calculator</h2>
+    <p>This Canadian income tax calculator lets you quickly estimate your after-tax income, and provides comparisons across all provinces and territories in Canada.<p>
+
+    <p>On this page, you'll find 3 separate analyses that allow you to crunch the numbers from different perspectives.</p>
+    <ul>
+        <li>Analysis #1: After-Tax Income Estimator</li>
+        <li>Analysis #2: What Salary Do I Need to Get $X of After-Tax Income?</li>
+        <li>Analysis #3: Head-to-Head Regional Comparison</li>
+    </ul>
+
+    &nbsp;
+
+    <h2>Analysis #1: After-Tax Income Estimator</h2>
+
+    <p>Input your income amounts in the boxes below.<p>
+
+    <p>For each province / territory in Canada, the outputs will display your after-tax income, total taxes paid, and average / marginal tax rate.</p>
 
     <div class="assumptionTableDiv">
         <table>
@@ -79,8 +94,8 @@
     <div id="incomeDescriptionDiv" class="hide">
         <p><b>Employment Income:</b> Base salary, bonus, part-time work</p>
         <p><b>Capital Gains:</b> The total amount of your capital gains</p>
-        <p><b>Eligible Canadian Dividends:</b> Usually, these are dividends paid by publicly-traded Canadian companies. Enter the total amount of the dividends</p>
-        <p><b>Non-Eligible Dividends:</b> Usually, these are dividends paid by private Canadian companies. Enter the total amount of the dividends</p>
+        <p><b>Eligible Canadian Dividends:</b> Usually, these are dividends paid by <em>publicly-traded</em> Canadian companies. Enter the total amount of the dividends</p>
+        <p><b>Non-Eligible Dividends:</b> Usually, these are dividends paid by <em>private</em> Canadian companies. Enter the total amount of the dividends</p>
         <p><b>Other Income:</b> All other income (including interest income, US dividend income, EI, CPP, OAS, etc.)</p>
         <p><b>RRSP Contribution:</b> The total amount of your RRSP contribution in this tax year</p>
     </div>
@@ -116,11 +131,27 @@
         </table>
     </div>
 
+    <div id="analysisNotesDiv">
+        <p>A few notes on this analysis:</p>
+        <ul>
+            <li>Taxes included in this analysis: federal tax, provincial tax, CPP / QPP, EI, QPIP (Quebec), OHIP (Ontario)</li>
+            <li>Tax credits which have been incorporated: basic personal amount (federal / provincial), dividend tax credits (federal / provincial), credit for EI / CPP / QPP contributions, Canada employment amount, Quebec abatement, your assumed RRSP deduction</li>
+            <li>All values used for tax brackets, personal amounts, and other credits are for the 2019 tax year</li>
+            <li>The average tax rate is calculated as total taxes paid divided by total pre-tax income (as opposed to total taxable income)</li>
+            <li>The marginal tax rate represents the tax rate on $1 of incremental taxable income</li>
+        </ul>
+    </div>
+
     &nbsp;
 
 
-    <h2>Analysis #2: Pre-Tax Income Calculator</h2>
+    <h2>Analysis #2: What Salary Do I Need to Get $X of After-Tax Income?</h2>
 
+    <p>For any target amount of after-tax income, this tool tells you how much pre-tax employment income you'd need to get there.</p>
+
+    <p>Put another way -- if you're looking to earn a certain amount of take-home pay, this shows the salary that would be required in each province or territory to meet your goal.</p>
+
+    <p>
     <div class="assumptionTableDiv">
         <table>
             <tr>
@@ -138,9 +169,17 @@
         </div>
     </div>
 
+    <p id="analysis2Note">Note: The pre-tax incomes shown above are approximate, as they have been rounded up to the nearest $500 increment.</p>
+
     &nbsp;
 
-    <h2>Analysis #3: Provincial Comparison</h2>
+    <h2>Analysis #3: Head-to-Head Regional Comparison</h2>
+
+    <p>This analysis lets you see how after-tax income stacks up in one region of Canada versus another.</p>
+
+    <p>Specifically, for a range of pre-tax employment income from $0 to $300,000 per year, these charts display the after-tax income for each region, and the implied difference in after-tax income.</p>
+
+    <p>Use the drop-down boxes below to select your regions of interest.</p>
 
     <div class="assumptionTableDiv">
 
@@ -193,7 +232,9 @@
     <div id="outputDiv3">
         <div id="provinceChartDiv">
             <canvas id="provinceChart"></canvas>
-        </div>   
+        </div>
+
+        <p id="analysis3Para"></p>   
 
         <div id="provinceDeltaChartDiv">
             <canvas id="provinceDeltaChart"></canvas>
@@ -202,7 +243,19 @@
 
     &nbsp;
 
+    <h2>Odds and Ends</h2>
 
+    <em><p>Disclaimer: All of the calculations on this page are provided for informational purposes only. While I've done my best to ensure the accuracy of the inputs, assumptions, and calculations, I cannot guarantee that these figures are correct.</p></em>
+
+    <p>If you'd prefer a spreadsheet version of this Canadian income tax calculator, you can <a href="https://drive.google.com/drive/u/1/folders/1SQFhW5quzXyWTpumCYy9P4j_Lk_csnqY" target="_blank" rel="noopener">download the excel file here</a>. This is the file I created to work out the math before I turned this into an interactive web tool.</p>
+
+    <p>The inputs to this calculator were sourced from:</p>
+    <ul>
+        <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/frequently-asked-questions-individuals/canadian-income-tax-rates-individuals-current-previous-years.html" target="_blank" rel="noopener">Canada Revenue Agency</a></li>
+        <li><a href="https://www.taxtips.ca/marginaltaxrates.htm" target="_blank" rel="noopener">TaxTips.ca</a>
+    </ul>
+
+    &nbsp;
 
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script>

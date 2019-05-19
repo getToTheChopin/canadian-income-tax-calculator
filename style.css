@@ -220,11 +220,19 @@ input[type=number]:hover{
 
 #incomeDescriptionDiv{
     font-size:0.8em;
-    padding: 1%;
+    padding: 3px 6px 0% 6px;
     margin:1%;
     border: 1px dotted gray;
 }
 
 .hide{
     display:none;
+}
+
+#analysisNotesDiv{
+    font-size:0.8em;
+}
+
+#analysis2Note{
+    font-size:0.8em;
 }
