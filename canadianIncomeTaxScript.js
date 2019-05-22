@@ -10,7 +10,7 @@ var eligibleGrossUp = 0.38;
 var nonEligibleGrossUp = 0.15;
 var totalTaxableIncome = 0;
 
-var labelArray=["AB","BC","MB","NB","NL","NT","NS","NU","ON","PE","QC","SK","YU"];
+var labelArray=["AB","BC","MB","NB","NL","NT","NS","NU","ON","PE","QC","SK","YT"];
 
 var chart;
 var afterTaxIncomeBarChart = document.getElementById("afterTaxIncomeBarChart");
@@ -38,7 +38,7 @@ var ONTax = 0;
 var PETax = 0;
 var QCTax = 0;
 var SKTax = 0;
-var YUTax = 0;
+var YTTax = 0;
 
 var totalABTaxes;
 var totalBCTaxes;
@@ -52,7 +52,7 @@ var totalONTaxes;
 var totalPETaxes;
 var totalQCTaxes;
 var totalSKTaxes;
-var totalYUTaxes;
+var totalYTTaxes;
 
 var totalGrossIncomeArray = [];
 var federalTaxArray = [];
@@ -290,20 +290,20 @@ var SKEligibleDivCredit = 0.11;
 var SKNonEligibleDivCredit = 0.03362;
 var SKTaxCreditRate = 0.105;
 
-//YU assumptions
-var YUBracket1 = 47630;
-var YUBracket2 = 95259;
-var YUBracket3 = 147667;
-var YUBracket4 = 500000;
-var YURate1 = 0.064;
-var YURate2 = 0.09;
-var YURate3 = 0.109;
-var YURate4 = 0.128;
-var YURate5 = 0.15;
-var YUPersonalAmount = 12069;
-var YUEligibleDivCredit = 0.1202;
-var YUNonEligibleDivCredit = 0.0230;
-var YUTaxCreditRate = 0.064;
+//YT assumptions
+var YTBracket1 = 47630;
+var YTBracket2 = 95259;
+var YTBracket3 = 147667;
+var YTBracket4 = 500000;
+var YTRate1 = 0.064;
+var YTRate2 = 0.09;
+var YTRate3 = 0.109;
+var YTRate4 = 0.128;
+var YTRate5 = 0.15;
+var YTPersonalAmount = 12069;
+var YTEligibleDivCredit = 0.1202;
+var YTNonEligibleDivCredit = 0.0230;
+var YTTaxCreditRate = 0.064;
 
 //Analysis #1
 var totalPreTaxIncomeOutput = document.getElementById("totalPreTaxIncomeOutput");
@@ -437,7 +437,7 @@ function calculateTaxes(){
     calculatePE();
     calculateQC();
     calculateSK();
-    calculateYU();
+    calculateYT();
 
     //calculate total taxes
     totalABTaxes = federalTaxROC+ABTax+CPPTax+EITaxROC;
@@ -452,7 +452,7 @@ function calculateTaxes(){
     totalPETaxes = federalTaxROC+PETax+CPPTax+EITaxROC;
     totalQCTaxes = federalTaxQC+QCTax+QPPTax+EITaxQC+QPIPTax;
     totalSKTaxes = federalTaxROC+SKTax+CPPTax+EITaxROC;
-    totalYUTaxes = federalTaxROC+YUTax+CPPTax+EITaxROC;
+    totalYTTaxes = federalTaxROC+YTTax+CPPTax+EITaxROC;
 
 }
 
@@ -473,7 +473,7 @@ function showOutputs(){
     var netIncomePE = totalGrossIncome - totalPETaxes;
     var netIncomeQC = totalGrossIncome - totalQCTaxes;
     var netIncomeSK = totalGrossIncome - totalSKTaxes;
-    var netIncomeYU = totalGrossIncome - totalYUTaxes;
+    var netIncomeYT = totalGrossIncome - totalYTTaxes;
    
     var ABAvgRate = totalABTaxes / totalGrossIncome;
     var BCAvgRate = totalBCTaxes / totalGrossIncome;
@@ -487,19 +487,19 @@ function showOutputs(){
     var PEAvgRate = totalPETaxes / totalGrossIncome;
     var QCAvgRate = totalQCTaxes / totalGrossIncome;
     var SKAvgRate = totalSKTaxes / totalGrossIncome;
-    var YUAvgRate = totalYUTaxes / totalGrossIncome;
+    var YTAvgRate = totalYTTaxes / totalGrossIncome;
 
     totalGrossIncomeArray = [totalGrossIncome,totalGrossIncome,totalGrossIncome,totalGrossIncome,totalGrossIncome,totalGrossIncome,totalGrossIncome,totalGrossIncome,totalGrossIncome,totalGrossIncome,totalGrossIncome,totalGrossIncome,totalGrossIncome];
     federalTaxArray = [federalTaxROC,federalTaxROC,federalTaxROC,federalTaxROC,federalTaxROC,federalTaxROC,federalTaxROC,federalTaxROC,federalTaxROC,federalTaxROC,federalTaxQC,federalTaxROC,federalTaxROC,];
-    provincialTaxArray = [ABTax,BCTax,MBTax,NBTax,NLTax,NTTax,NSTax,NUTax,ONTax,PETax,QCTax,SKTax,YUTax];
+    provincialTaxArray = [ABTax,BCTax,MBTax,NBTax,NLTax,NTTax,NSTax,NUTax,ONTax,PETax,QCTax,SKTax,YTTax];
     CPPTaxArray=[CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,"n/a",CPPTax,CPPTax];
     EITaxArray=[EITaxROC,EITaxROC,EITaxROC,EITaxROC,EITaxROC,EITaxROC,EITaxROC,EITaxROC,EITaxROC,EITaxROC,EITaxQC,EITaxROC,EITaxROC];
     QPPTaxArray=["n/a","n/a","n/a","n/a","n/a","n/a","n/a","n/a","n/a","n/a",QPPTax,"n/a","n/a",];
     CPPQPPTaxArray=[CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,CPPTax,QPPTax,CPPTax,CPPTax];
     QPIPTaxArray=["n/a","n/a","n/a","n/a","n/a","n/a","n/a","n/a","n/a","n/a",QPIPTax,"n/a","n/a",];
-    totalTaxesArray=[totalABTaxes,totalBCTaxes,totalMBTaxes,totalNBTaxes,totalNLTaxes,totalNTTaxes,totalNSTaxes,totalNUTaxes,totalONTaxes,totalPETaxes,totalQCTaxes,totalSKTaxes,totalYUTaxes];
-    netIncomeArray=[netIncomeAB,netIncomeBC,netIncomeMB,netIncomeNB,netIncomeNL,netIncomeNT,netIncomeNS,netIncomeNU,netIncomeON,netIncomePE,netIncomeQC,netIncomeSK,netIncomeYU];
-    avgTaxRateArray=[ABAvgRate,BCAvgRate,MBAvgRate,NBAvgRate,NLAvgRate,NTAvgRate,NSAvgRate,NUAvgRate,ONAvgRate,PEAvgRate,QCAvgRate,SKAvgRate,YUAvgRate];
+    totalTaxesArray=[totalABTaxes,totalBCTaxes,totalMBTaxes,totalNBTaxes,totalNLTaxes,totalNTTaxes,totalNSTaxes,totalNUTaxes,totalONTaxes,totalPETaxes,totalQCTaxes,totalSKTaxes,totalYTTaxes];
+    netIncomeArray=[netIncomeAB,netIncomeBC,netIncomeMB,netIncomeNB,netIncomeNL,netIncomeNT,netIncomeNS,netIncomeNU,netIncomeON,netIncomePE,netIncomeQC,netIncomeSK,netIncomeYT];
+    avgTaxRateArray=[ABAvgRate,BCAvgRate,MBAvgRate,NBAvgRate,NLAvgRate,NTAvgRate,NSAvgRate,NUAvgRate,ONAvgRate,PEAvgRate,QCAvgRate,SKAvgRate,YTAvgRate];
     marginalTaxRateArray = calculateMarginalRates();
 
 
@@ -953,7 +953,7 @@ function calculateMarginalRates(){
 
     calculateTaxes();
 
-    var newTotalTaxes =[totalABTaxes,totalBCTaxes,totalMBTaxes,totalNBTaxes,totalNLTaxes,totalNTTaxes,totalNSTaxes,totalNUTaxes,totalONTaxes,totalPETaxes,totalQCTaxes,totalSKTaxes,totalYUTaxes];
+    var newTotalTaxes =[totalABTaxes,totalBCTaxes,totalMBTaxes,totalNBTaxes,totalNLTaxes,totalNTTaxes,totalNSTaxes,totalNUTaxes,totalONTaxes,totalPETaxes,totalQCTaxes,totalSKTaxes,totalYTTaxes];
 
     for(i=0; i<currentTotalTaxes.length; i++){
         marginalArray[i] = newTotalTaxes[i] - currentTotalTaxes[i];
@@ -1441,37 +1441,37 @@ function calculateSK(){
 }
 
 
-function calculateYU(){
-    //YU Territorial
-    var YUBracket1Amount = 0;
-    var YUBracket2Amount = 0;
-    var YUBracket3Amount = 0;
-    var YUBracket4Amount = 0;
-    var YUBracket5Amount = 0;
+function calculateYT(){
+    //YT Territorial
+    var YTBracket1Amount = 0;
+    var YTBracket2Amount = 0;
+    var YTBracket3Amount = 0;
+    var YTBracket4Amount = 0;
+    var YTBracket5Amount = 0;
 
-    var YUBracket1Tax = 0;
-    var YUBracket2Tax = 0;
-    var YUBracket3Tax = 0;
-    var YUBracket4Tax = 0;
-    var YUBracket5Tax = 0;
+    var YTBracket1Tax = 0;
+    var YTBracket2Tax = 0;
+    var YTBracket3Tax = 0;
+    var YTBracket4Tax = 0;
+    var YTBracket5Tax = 0;
 
-    YUBracket1Amount = Math.min(Math.max(0,totalTaxableIncome),YUBracket1);
-    YUBracket2Amount = (Math.min(Math.max(0,totalTaxableIncome),YUBracket2)-YUBracket1Amount);
-    YUBracket3Amount = (Math.min(Math.max(0,totalTaxableIncome),YUBracket3)-YUBracket1Amount-YUBracket2Amount);
-    YUBracket4Amount = (Math.min(Math.max(0,totalTaxableIncome),YUBracket4)-YUBracket1Amount-YUBracket2Amount-YUBracket3Amount);
-    YUBracket5Amount = (Math.max(0,totalTaxableIncome)-YUBracket1Amount-YUBracket2Amount-YUBracket3Amount-YUBracket4Amount);
+    YTBracket1Amount = Math.min(Math.max(0,totalTaxableIncome),YTBracket1);
+    YTBracket2Amount = (Math.min(Math.max(0,totalTaxableIncome),YTBracket2)-YTBracket1Amount);
+    YTBracket3Amount = (Math.min(Math.max(0,totalTaxableIncome),YTBracket3)-YTBracket1Amount-YTBracket2Amount);
+    YTBracket4Amount = (Math.min(Math.max(0,totalTaxableIncome),YTBracket4)-YTBracket1Amount-YTBracket2Amount-YTBracket3Amount);
+    YTBracket5Amount = (Math.max(0,totalTaxableIncome)-YTBracket1Amount-YTBracket2Amount-YTBracket3Amount-YTBracket4Amount);
 
-    YUBracket1Tax = YUBracket1Amount * YURate1;
-    YUBracket2Tax = YUBracket2Amount * YURate2;
-    YUBracket3Tax = YUBracket3Amount * YURate3;
-    YUBracket4Tax = YUBracket4Amount * YURate4;
-    YUBracket5Tax = YUBracket5Amount * YURate5;
+    YTBracket1Tax = YTBracket1Amount * YTRate1;
+    YTBracket2Tax = YTBracket2Amount * YTRate2;
+    YTBracket3Tax = YTBracket3Amount * YTRate3;
+    YTBracket4Tax = YTBracket4Amount * YTRate4;
+    YTBracket5Tax = YTBracket5Amount * YTRate5;
 
-    var YUTaxSubtotal = YUBracket1Tax + YUBracket2Tax + YUBracket3Tax + YUBracket4Tax + YUBracket5Tax;
+    var YTTaxSubtotal = YTBracket1Tax + YTBracket2Tax + YTBracket3Tax + YTBracket4Tax + YTBracket5Tax;
     
-    var YUTaxCredits = (YUPersonalAmount + CPPTax + EITaxROC + federalEmploymentAmount) * YUTaxCreditRate + eligibleDividends * (1+eligibleGrossUp) * YUEligibleDivCredit + nonEligibleDividends * (1+nonEligibleGrossUp) * YUNonEligibleDivCredit;
+    var YTTaxCredits = (YTPersonalAmount + CPPTax + EITaxROC + federalEmploymentAmount) * YTTaxCreditRate + eligibleDividends * (1+eligibleGrossUp) * YTEligibleDivCredit + nonEligibleDividends * (1+nonEligibleGrossUp) * YTNonEligibleDivCredit;
 
-    YUTax = Math.max(YUTaxSubtotal - YUTaxCredits,0);
+    YTTax = Math.max(YTTaxSubtotal - YTTaxCredits,0);
 }
 
 
@@ -1501,7 +1501,7 @@ function seekPreTaxIncome(netIncomeGoal){
     var PETestNetIncome = 0;
     var QCTestNetIncome = 0;
     var SKTestNetIncome = 0;
-    var YUTestNetIncome = 0;
+    var YTTestNetIncome = 0;
 
     var ABGrossIncome = 0;
     var BCGrossIncome = 0;
@@ -1515,7 +1515,7 @@ function seekPreTaxIncome(netIncomeGoal){
     var PEGrossIncome = 0;
     var QCGrossIncome = 0;
     var SKGrossIncome = 0;
-    var YUGrossIncome = 0;
+    var YTGrossIncome = 0;
     
     //initialize switches for each province (set to 1 if net income goal has been reached)
     var ABSwitch = 0;
@@ -1530,7 +1530,7 @@ function seekPreTaxIncome(netIncomeGoal){
     var PESwitch = 0;
     var QCSwitch = 0;
     var SKSwitch = 0;
-    var YUSwitch = 0;
+    var YTSwitch = 0;
 
     var switchTotal = 0;
 
@@ -1668,24 +1668,24 @@ function seekPreTaxIncome(netIncomeGoal){
             }
         }
 
-        //YU
-        if(YUSwitch==0){
-            calculateYU();
-            YUTestNetIncome = employmentIncome - federalTaxROC - YUTax - CPPTax - EITaxROC;
-            if(YUTestNetIncome>=netIncomeGoal){
-                YUSwitch = 1;
-                YUGrossIncome = employmentIncome;
+        //YT
+        if(YTSwitch==0){
+            calculateYT();
+            YTTestNetIncome = employmentIncome - federalTaxROC - YTTax - CPPTax - EITaxROC;
+            if(YTTestNetIncome>=netIncomeGoal){
+                YTSwitch = 1;
+                YTGrossIncome = employmentIncome;
             }
         }
 
-        switchTotal = ABSwitch + BCSwitch + MBSwitch + NBSwitch + NLSwitch + NTSwitch + NSSwitch + NUSwitch + ONSwitch + PESwitch + QCSwitch + SKSwitch + YUSwitch;
+        switchTotal = ABSwitch + BCSwitch + MBSwitch + NBSwitch + NLSwitch + NTSwitch + NSSwitch + NUSwitch + ONSwitch + PESwitch + QCSwitch + SKSwitch + YTSwitch;
 
         if(switchTotal==13){
             break;
         }
     }
 
-    grossIncomeArray = [ABGrossIncome,BCGrossIncome,MBGrossIncome,NBGrossIncome,NLGrossIncome,NTGrossIncome,NSGrossIncome,NUGrossIncome,ONGrossIncome,PEGrossIncome,QCGrossIncome,SKGrossIncome,YUGrossIncome];
+    grossIncomeArray = [ABGrossIncome,BCGrossIncome,MBGrossIncome,NBGrossIncome,NLGrossIncome,NTGrossIncome,NSGrossIncome,NUGrossIncome,ONGrossIncome,PEGrossIncome,QCGrossIncome,SKGrossIncome,YTGrossIncome];
     
 }
 
