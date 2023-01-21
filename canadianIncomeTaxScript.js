@@ -82,78 +82,78 @@ var QPIPTax = 0;
 var OHIPTax = 0;
 
 var CPPExemption = 3500;
-var CPPContributionRate = 0.0525;
-var CPPMaxContribution = 2898;
+var CPPContributionRate = 0.0595;
+var CPPMaxContribution = 3754.45;
 var enhancedCPPRate = 0.003;
 
 var QPPExemption = 3500;
-var QPPContributionRate = 0.0570;
-var QPPMaxContribution = 3146.40;
+var QPPContributionRate = 0.0640;
+var QPPMaxContribution = 4038.40;
 var enhancedQPPRate = 0.003;
 
-var EIROCRate = 0.0158;
-var EIROCMax = 856.36;
+var EIROCRate = 0.0163;
+var EIROCMax = 1002.45;
 
-var EIQCRate = 0.0120;
-var EIQCMax = 650.40;
+var EIQCRate = 0.0127;
+var EIQCMax = 781.05;
 
 var QPIPExemption = 2000;
 var QPIPContributionRate = 0.00494;
-var QPIPMaxContribution = 387.79;
+var QPIPMaxContribution = 449.54;
 var QPIPTax = 0;
 
 var OHIPContribution = 0;
 
 
 //Federal assumptions
-var federalBracket1 = 48535;
-var federalBracket2 = 97069;
-var federalBracket3 = 150473;
-var federalBracket4 = 214368;
+var federalBracket1 = 53359;
+var federalBracket2 = 106717;
+var federalBracket3 = 165430;
+var federalBracket4 = 235675;
 var federalRate1 = 0.15;
 var federalRate2 = 0.205;
 var federalRate3 = 0.26;
-var federalRate4 = 0.29;
+var federalRate4 = 0.2932;
 var federalRate5 = 0.33;
 
-var baseFederalPersonalAmount = 12298;
-var maxEnhancedBPA = 931;
+var baseFederalPersonalAmount = 13521;
+var maxEnhancedBPA = 1479;
 var enhancedBPA = 0;
 var totalFederalPersonalAmount = 0;
-var enhancedBPAThresholdStart = 150473;
-var enhancedBPAThresholdEnd = 214368;
+var enhancedBPAThresholdStart = 165430;
+var enhancedBPAThresholdEnd = 235675;
 
-var federalEligibleDivCredit = 0.1502;
+var federalEligibleDivCredit = 0.150198;
 var federalNonEligibleDivCredit = 0.090301;
 var federalTaxCreditRate = 0.15;
 var federalEmploymentAmount = 0;
-var federalEmploymentMax = 1245;
+var federalEmploymentMax = 1257;
 
 var QCAbatementRate = 0.165;
 
 
 //AB assumptions
-var ABBracket1 = 131220;
-var ABBracket2 = 157464;
-var ABBracket3 = 209952;
-var ABBracket4 = 314928;
+var ABBracket1 = 142292;
+var ABBracket2 = 170751;
+var ABBracket3 = 227668;
+var ABBracket4 = 341502;
 var ABRate1 = 0.1;
 var ABRate2 = 0.12;
 var ABRate3 = 0.13;
 var ABRate4 = 0.14;
 var ABRate5 = 0.15;
-var ABPersonalAmount = 19369;
-var ABEligibleDivCredit = 0.1;
+var ABPersonalAmount = 21003;
+var ABEligibleDivCredit = 0.0812;
 var ABNonEligibleDivCredit = 0.0218;
 var ABTaxCreditRate = 0.1;
 
 //BC assumptions
-var BCBracket1 = 41725;
-var BCBracket2 = 83451;
-var BCBracket3 = 95812;
-var BCBracket4 = 116344;
-var BCBracket5 = 157748;
-var BCBracket6 = 220000;
+var BCBracket1 = 45654;
+var BCBracket2 = 91310;
+var BCBracket3 = 104835;
+var BCBracket4 = 127299;
+var BCBracket5 = 172602;
+var BCBracket6 = 240716;
 var BCRate1 = 0.0506;
 var BCRate2 = 0.077;
 var BCRate3 = 0.105;
@@ -161,61 +161,65 @@ var BCRate4 = 0.1229;
 var BCRate5 = 0.147;
 var BCRate6 = 0.168;
 var BCRate7 = 0.205;
-var BCPersonalAmount = 10949;
+var BCPersonalAmount = 11981;
 var BCEligibleDivCredit = 0.12;
 var BCNonEligibleDivCredit = 0.0196;
 var BCTaxCreditRate = 0.0506;
 
 //MB assumptions
-var MBBracket1 = 33389;
-var MBBracket2 = 72164;
+var MBBracket1 = 36842;
+var MBBracket2 = 79625;
 var MBRate1 = 0.108;
 var MBRate2 = 0.1275;
 var MBRate3 = 0.174;
-var MBPersonalAmount = 9838;
+var MBPersonalAmount = 10855;
 var MBEligibleDivCredit = 0.08;
 var MBNonEligibleDivCredit = 0.007835;
 var MBTaxCreditRate = 0.108;
 
 //NB assumptions
-var NBBracket1 = 43401;
-var NBBracket2 = 86803;
-var NBBracket3 = 141122;
-var NBBracket4 = 160776;
-var NBRate1 = 0.0968;
-var NBRate2 = 0.1482;
-var NBRate3 = 0.1652;
-var NBRate4 = 0.1784;
-var NBRate5 = 0.203;
-var NBPersonalAmount = 10459;
+var NBBracket1 = 47715;
+var NBBracket2 = 95431;
+var NBBracket3 = 176756;
+var NBRate1 = 0.0940;
+var NBRate2 = 0.14;
+var NBRate3 = 0.16;
+var NBRate4 = 0.195;
+var NBPersonalAmount = 12458;
 var NBEligibleDivCredit = 0.14;
 var NBNonEligibleDivCredit = 0.0275;
-var NBTaxCreditRate = 0.0968;
+var NBTaxCreditRate = 0.0940;
 
 //NL assumptions
-var NLBracket1 = 37929;
-var NLBracket2 = 75858;
-var NLBracket3 = 135432;
-var NLBracket4 = 189604;
+var NLBracket1 = 41457;
+var NLBracket2 = 82913;
+var NLBracket3 = 148027;
+var NLBracket4 = 207239;
+var NLBracket5 = 264750;
+var NLBracket6 = 529500;
+var NLBracket7 = 1059000;
 var NLRate1 = 0.087;
 var NLRate2 = 0.145;
 var NLRate3 = 0.158;
-var NLRate4 = 0.173;
-var NLRate5 = 0.183;
-var NLPersonalAmount = 9498;
-var NLEligibleDivCredit = 0.054;
-var NLNonEligibleDivCredit = 0.035;
+var NLRate4 = 0.178;
+var NLRate5 = 0.198;
+var NLRate6 = 0.208;
+var NLRate7 = 0.213;
+var NLRate8 = 0.218;
+var NLPersonalAmount = 10382;
+var NLEligibleDivCredit = 0.063;
+var NLNonEligibleDivCredit = 0.032;
 var NLTaxCreditRate = 0.087;
 
 //NT assumptions
-var NTBracket1 = 43957;
-var NTBracket2 = 87916;
-var NTBracket3 = 142932;
+var NTBracket1 = 48326;
+var NTBracket2 = 96655;
+var NTBracket3 = 157139;
 var NTRate1 = 0.059;
 var NTRate2 = 0.086;
 var NTRate3 = 0.122;
 var NTRate4 = 0.1405;
-var NTPersonalAmount = 15093;
+var NTPersonalAmount = 16593;
 var NTEligibleDivCredit = 0.115;
 var NTNonEligibleDivCredit = 0.06;
 var NTTaxCreditRate = 0.059;
@@ -238,21 +242,21 @@ var NSNonEligibleDivCredit = 0.0299;
 var NSTaxCreditRate = 0.0879;
 
 //NU assumptions
-var NUBracket1 = 46277;
-var NUBracket2 = 92555;
-var NUBracket3 = 150473;
+var NUBracket1 = 50877;
+var NUBracket2 = 101754;
+var NUBracket3 = 165429;
 var NURate1 = 0.04;
 var NURate2 = 0.07;
 var NURate3 = 0.09;
 var NURate4 = 0.115;
-var NUPersonalAmount = 16304;
+var NUPersonalAmount = 17925;
 var NUEligibleDivCredit = 0.0551;
 var NUNonEligibleDivCredit = 0.0261;
 var NUTaxCreditRate = 0.04;
 
 //ON assumptions
-var ONBracket1 = 44740;
-var ONBracket2 = 89482;
+var ONBracket1 = 49231;
+var ONBracket2 = 98463;
 var ONBracket3 = 150000;
 var ONBracket4 = 220000;
 var ONRate1 = 0.0505;
@@ -260,13 +264,13 @@ var ONRate2 = 0.0915;
 var ONRate3 = 0.1116;
 var ONRate4 = 0.1216;
 var ONRate5 = 0.1316;
-var ONPersonalAmount = 10783;
+var ONPersonalAmount = 11865;
 var ONEligibleDivCredit = 0.10;
 var ONNonEligibleDivCredit = 0.029863;
 var ONTaxCreditRate = 0.0505;
 
-var ONSurtax1 = 4830;
-var ONSurtax2 = 6182;
+var ONSurtax1 = 5315;
+var ONSurtax2 = 6802;
 var ONSurtax1Rate = 0.2;
 var ONSurtax2Rate = 0.36;
 
@@ -276,51 +280,53 @@ var PEBracket2 = 63969;
 var PERate1 = 0.098;
 var PERate2 = 0.138;
 var PERate3 = 0.167;
-var PEPersonalAmount = 10000;
+var PEPersonalAmount = 12000;
 var PEEligibleDivCredit = 0.105;
-var PENonEligibleDivCredit = 0.0274;
+var PENonEligibleDivCredit = 0.0130;
 var PETaxCreditRate = 0.098;
 
 var PESurtax1 = 12500;
 var PESurtax1Rate = 0.1;
 
 //QC assumptions
-var QCBracket1 = 44545;
-var QCBracket2 = 89080;
-var QCBracket3 = 108390;
+var QCBracket1 = 49275;
+var QCBracket2 = 98540;
+var QCBracket3 = 119910;
 var QCRate1 = 0.15;
 var QCRate2 = 0.20;
 var QCRate3 = 0.24;
 var QCRate4 = 0.2575;
-var QCPersonalAmount = 15532;
+var QCPersonalAmount = 17183;
 var QCEligibleDivCredit = 0.117;
-var QCNonEligibleDivCredit = 0.0477;
+var QCNonEligibleDivCredit = 0.0342;
 var QCTaxCreditRate = 0.15;
 
 //SK assumptions
-var SKBracket1 = 45225;
-var SKBracket2 = 129214;
+var SKBracket1 = 49720;
+var SKBracket2 = 142058;
 var SKRate1 = 0.105;
 var SKRate2 = 0.125;
 var SKRate3 = 0.145;
-var SKPersonalAmount = 16065;
+var SKPersonalAmount = 17661;
 var SKEligibleDivCredit = 0.11;
-var SKNonEligibleDivCredit = 0.03362;
+var SKNonEligibleDivCredit = 0.02105;
 var SKTaxCreditRate = 0.105;
 
 //YT assumptions
-var YTBracket1 = 48535;
-var YTBracket2 = 97069;
-var YTBracket3 = 150473;
-var YTBracket4 = 500000;
+var YTBracket1 = 53359;
+var YTBracket2 = 106717;
+var YTBracket3 = 165430;
+var YTBracket4 = 235675;
+var YTBracket5 = 500000;
 var YTRate1 = 0.064;
 var YTRate2 = 0.09;
 var YTRate3 = 0.109;
-var YTRate4 = 0.128;
-var YTRate5 = 0.15;
-var YTPersonalAmount = 12298;
+var YTRate4 = 0.129;
+var YTRate5 = 0.128;
+var YTRate6 = 0.15;
+var YTPersonalAmount = 15000;
 var YTEligibleDivCredit = 0.1202;
-var YTNonEligibleDivCredit = 0.0230;
+var YTNonEligibleDivCredit = 0.0067;
 var YTTaxCreditRate = 0.064;
 
 //Analysis #1
@@ -952,8 +958,6 @@ function refreshAnalysis3(){
     showOutputs3();
 }
 
-
-
 function sortArrayByRank(unsortedArray, rankOrder){
 
     var sortedArray = [];
@@ -964,7 +968,6 @@ function sortArrayByRank(unsortedArray, rankOrder){
 
     return sortedArray;
 }
-
 
 function calculateMarginalRates(){
     var marginalArray = [];
@@ -1196,27 +1199,23 @@ function calculateNB(){
     var NBBracket2Amount = 0;
     var NBBracket3Amount = 0;
     var NBBracket4Amount = 0;
-    var NBBracket5Amount = 0;
 
     var NBBracket1Tax = 0;
     var NBBracket2Tax = 0;
     var NBBracket3Tax = 0;
     var NBBracket4Tax = 0;
-    var NBBracket5Tax = 0;
 
     NBBracket1Amount = Math.min(Math.max(0,totalTaxableIncome),NBBracket1);
     NBBracket2Amount = (Math.min(Math.max(0,totalTaxableIncome),NBBracket2)-NBBracket1Amount);
     NBBracket3Amount = (Math.min(Math.max(0,totalTaxableIncome),NBBracket3)-NBBracket1Amount-NBBracket2Amount);
-    NBBracket4Amount = (Math.min(Math.max(0,totalTaxableIncome),NBBracket4)-NBBracket1Amount-NBBracket2Amount-NBBracket3Amount);
-    NBBracket5Amount = (Math.max(0,totalTaxableIncome)-NBBracket1Amount-NBBracket2Amount-NBBracket3Amount-NBBracket4Amount);
+    NBBracket4Amount = (Math.max(0,totalTaxableIncome)-NBBracket1Amount-NBBracket2Amount-NBBracket3Amount);
 
     NBBracket1Tax = NBBracket1Amount * NBRate1;
     NBBracket2Tax = NBBracket2Amount * NBRate2;
     NBBracket3Tax = NBBracket3Amount * NBRate3;
     NBBracket4Tax = NBBracket4Amount * NBRate4;
-    NBBracket5Tax = NBBracket5Amount * NBRate5;
 
-    var NBTaxSubtotal = NBBracket1Tax + NBBracket2Tax + NBBracket3Tax + NBBracket4Tax + NBBracket5Tax;
+    var NBTaxSubtotal = NBBracket1Tax + NBBracket2Tax + NBBracket3Tax + NBBracket4Tax;
     
     var NBTaxCredits = (NBPersonalAmount + baseCPPTax + EITaxROC) * NBTaxCreditRate + eligibleDividends * (1+eligibleGrossUp) * NBEligibleDivCredit + nonEligibleDividends * (1+nonEligibleGrossUp) * NBNonEligibleDivCredit;
 
@@ -1230,26 +1229,38 @@ function calculateNL(){
     var NLBracket3Amount = 0;
     var NLBracket4Amount = 0;
     var NLBracket5Amount = 0;
+    var NLBracket6Amount = 0;
+    var NLBracket7Amount = 0;
+    var NLBracket8Amount = 0;
 
     var NLBracket1Tax = 0;
     var NLBracket2Tax = 0;
     var NLBracket3Tax = 0;
     var NLBracket4Tax = 0;
     var NLBracket5Tax = 0;
+    var NLBracket6Tax = 0;
+    var NLBracket7Tax = 0;
+    var NLBracket8Tax = 0;
 
     NLBracket1Amount = Math.min(Math.max(0,totalTaxableIncome),NLBracket1);
     NLBracket2Amount = (Math.min(Math.max(0,totalTaxableIncome),NLBracket2)-NLBracket1Amount);
     NLBracket3Amount = (Math.min(Math.max(0,totalTaxableIncome),NLBracket3)-NLBracket1Amount-NLBracket2Amount);
     NLBracket4Amount = (Math.min(Math.max(0,totalTaxableIncome),NLBracket4)-NLBracket1Amount-NLBracket2Amount-NLBracket3Amount);
-    NLBracket5Amount = (Math.max(0,totalTaxableIncome)-NLBracket1Amount-NLBracket2Amount-NLBracket3Amount-NLBracket4Amount);
+    NLBracket5Amount = (Math.min(Math.max(0,totalTaxableIncome),NLBracket5)-NLBracket1Amount-NLBracket2Amount-NLBracket3Amount-NLBracket4Amount);
+    NLBracket6Amount = (Math.min(Math.max(0,totalTaxableIncome),NLBracket6)-NLBracket1Amount-NLBracket2Amount-NLBracket3Amount-NLBracket4Amount-NLBracket5Amount);
+    NLBracket7Amount = (Math.min(Math.max(0,totalTaxableIncome),NLBracket7)-NLBracket1Amount-NLBracket2Amount-NLBracket3Amount-NLBracket4Amount-NLBracket5Amount-NLBracket6Amount);
+    NLBracket8Amount = (Math.max(0,totalTaxableIncome)-NLBracket1Amount-NLBracket2Amount-NLBracket3Amount-NLBracket4Amount-NLBracket5Amount-NLBracket6Amount-NLBracket7Amount);
 
     NLBracket1Tax = NLBracket1Amount * NLRate1;
     NLBracket2Tax = NLBracket2Amount * NLRate2;
     NLBracket3Tax = NLBracket3Amount * NLRate3;
     NLBracket4Tax = NLBracket4Amount * NLRate4;
     NLBracket5Tax = NLBracket5Amount * NLRate5;
+    NLBracket6Tax = NLBracket6Amount * NLRate6;
+    NLBracket7Tax = NLBracket7Amount * NLRate7;
+    NLBracket8Tax = NLBracket8Amount * NLRate8;
 
-    var NLTaxSubtotal = NLBracket1Tax + NLBracket2Tax + NLBracket3Tax + NLBracket4Tax + NLBracket5Tax;
+    var NLTaxSubtotal = NLBracket1Tax + NLBracket2Tax + NLBracket3Tax + NLBracket4Tax + NLBracket5Tax + NLBracket6Tax + NLBracket7Tax + NLBracket8Tax;
     
     var NLTaxCredits = (NLPersonalAmount + baseCPPTax + EITaxROC) * NLTaxCreditRate + eligibleDividends * (1+eligibleGrossUp) * NLEligibleDivCredit + nonEligibleDividends * (1+nonEligibleGrossUp) * NLNonEligibleDivCredit;
 
@@ -1449,7 +1460,6 @@ function calculateQC(){
     QCTax = Math.max(QCTaxSubtotal - QCTaxCredits,0);
 }
 
-
 function calculateSK(){
     //SK Provincial
     var SKBracket1Amount = 0;
@@ -1475,7 +1485,6 @@ function calculateSK(){
     SKTax = Math.max(SKTaxSubtotal - SKTaxCredits,0);
 }
 
-
 function calculateYT(){
     //YT Territorial
     var YTBracket1Amount = 0;
@@ -1483,26 +1492,30 @@ function calculateYT(){
     var YTBracket3Amount = 0;
     var YTBracket4Amount = 0;
     var YTBracket5Amount = 0;
+    var YTBracket6Amount = 0;
 
     var YTBracket1Tax = 0;
     var YTBracket2Tax = 0;
     var YTBracket3Tax = 0;
     var YTBracket4Tax = 0;
     var YTBracket5Tax = 0;
+    var YTBracket6Tax = 0;
 
     YTBracket1Amount = Math.min(Math.max(0,totalTaxableIncome),YTBracket1);
     YTBracket2Amount = (Math.min(Math.max(0,totalTaxableIncome),YTBracket2)-YTBracket1Amount);
     YTBracket3Amount = (Math.min(Math.max(0,totalTaxableIncome),YTBracket3)-YTBracket1Amount-YTBracket2Amount);
     YTBracket4Amount = (Math.min(Math.max(0,totalTaxableIncome),YTBracket4)-YTBracket1Amount-YTBracket2Amount-YTBracket3Amount);
-    YTBracket5Amount = (Math.max(0,totalTaxableIncome)-YTBracket1Amount-YTBracket2Amount-YTBracket3Amount-YTBracket4Amount);
+    YTBracket5Amount = (Math.min(Math.max(0,totalTaxableIncome),YTBracket5)-YTBracket1Amount-YTBracket2Amount-YTBracket3Amount-YTBracket4Amount);
+    YTBracket6Amount = (Math.max(0,totalTaxableIncome)-YTBracket1Amount-YTBracket2Amount-YTBracket3Amount-YTBracket4Amount-YTBracket5Amount);
 
     YTBracket1Tax = YTBracket1Amount * YTRate1;
     YTBracket2Tax = YTBracket2Amount * YTRate2;
     YTBracket3Tax = YTBracket3Amount * YTRate3;
     YTBracket4Tax = YTBracket4Amount * YTRate4;
     YTBracket5Tax = YTBracket5Amount * YTRate5;
+    YTBracket6Tax = YTBracket6Amount * YTRate6;
 
-    var YTTaxSubtotal = YTBracket1Tax + YTBracket2Tax + YTBracket3Tax + YTBracket4Tax + YTBracket5Tax;
+    var YTTaxSubtotal = YTBracket1Tax + YTBracket2Tax + YTBracket3Tax + YTBracket4Tax + YTBracket5Tax + YTBracket6Tax;
     
     var YTTaxCredits = (YTPersonalAmount + baseCPPTax + EITaxROC + federalEmploymentAmount) * YTTaxCreditRate + eligibleDividends * (1+eligibleGrossUp) * YTEligibleDivCredit + nonEligibleDividends * (1+nonEligibleGrossUp) * YTNonEligibleDivCredit;
 
@@ -1744,7 +1757,6 @@ function showOutputs2(){
         grossIncomeArraySortedCopy[grossIncomeRankOrder[i]] = "n/a";
     }
 
-
     //generate label array sorted by gross income order
     var labelArraySorted2 = sortArrayByRank(labelArray,grossIncomeRankOrder);
 
@@ -1868,7 +1880,6 @@ function showOutputs2(){
 
 }
 
-
 function provinceComparison(a,b){
 
     var aString = String("calculate"+a);
@@ -1927,7 +1938,6 @@ function provinceComparison(a,b){
     }
 
 }
-
 
 function showOutputs3(){
 
@@ -2229,7 +2239,6 @@ function executeFunctionByName(functionName, context /*, args */) {
     }
     return context[func].apply(context, args);
 }
-
 
 function fillTable(){
 
