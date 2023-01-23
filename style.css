@@ -56,7 +56,7 @@ td {
 }
 
 
-.userInput1, .userInput2{
+.userInput1, .userInput2 {
     font-weight:bold;
     padding:1px;
     -moz-appearance:none; /* Firefox */
@@ -94,7 +94,7 @@ input[type=number]:hover{
     margin:auto;
 }
 
-#regionDropDownListA, #regionDropDownListB {
+#regionDropDownListA, #regionDropDownListB, #netRegionDropDownListA, #netRegionDropDownListB {
 
 	font-weight: bold;
 	padding: 4px 8px 4px 8px;
@@ -106,14 +106,33 @@ input[type=number]:hover{
 	
 }
 
-#regionDropDownListA{
+#regionDropDownListA, #netRegionDropDownListA{
     border:2px solid #0071B3;
 	color: #0071B3;
 }
 
-#regionDropDownListB{
+#regionDropDownListB, #netRegionDropDownListB{
     border:2px solid #B31B20;
 	color: #B31B20;
+}
+
+#headerA{
+    background-color: #0071B3;
+    color: white;
+}
+
+#headerB{
+    background-color: #B31B20;
+    color: white;
+}
+
+.highlightCell{
+    font-weight:bold;
+    background-color:rgb(236, 243, 255)
+}
+
+.boldCell{
+    font-weight:bold;
 }
 
 #totalPreTaxIncomeRow{
@@ -125,8 +144,6 @@ input[type=number]:hover{
     border-top: 2px solid #31D0CB;
     border-bottom: 2px solid #31D0CB;
 }
-
-
 
 /* css as usual */
 #mainTable{
@@ -235,4 +252,14 @@ input[type=number]:hover{
 
 #analysis2Note{
     font-size:0.8em;
+}
+
+.userInput4 {
+    font-weight:bold;
+    padding:1px;
+    text-align:center;
+    font-family:helvetica;
+    font-size:0.9em;
+    width: 100px;
+	max-width:80%;
 }

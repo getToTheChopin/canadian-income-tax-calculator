@@ -357,6 +357,19 @@ var provinceANetIncomeArray = [];
 var provinceBNetIncomeArray = [];
 var provinceDeltaArray = [];
 
+//Analysis #4 Assumptions
+
+var provinceANetIncome = 0;
+var provinceBNetIncome = 0;
+
+var netProvinceA = "BC";
+var netProvinceB = "QC";
+
+var incomeA = 0;
+var incomeB = 0;
+
+var provinceAOutputs = [];
+var provinceBOutputs = [];
 
 //Fill Table function
 var mainTable = document.getElementById("mainTable");
@@ -393,12 +406,14 @@ showOutputs2();
 provinceComparison(provinceA,provinceB);
 showOutputs3();
 
+netPaycheckCalculator(netProvinceA,netProvinceB,incomeA,incomeB);
+showOutputs4();
 
 function addInputEventListeners() {
     var inputsArray1 = document.getElementsByClassName("userInput1");
     var inputsArray2 = document.getElementsByClassName("userInput2");
     var inputsArray3 = document.getElementsByClassName("userInput3");
-
+    var inputsArray4 = document.getElementsByClassName("userInput4");
 
     for(i=0;i<inputsArray1.length;i++) {
         inputsArray1[i].addEventListener('change',refreshAnalysis1, false);
@@ -410,6 +425,10 @@ function addInputEventListeners() {
 
     for(i=0;i<inputsArray3.length;i++) {
         inputsArray3[i].addEventListener('change',refreshAnalysis3, false);
+    }
+
+    for(i=0;i<inputsArray4.length;i++) {
+        inputsArray4[i].addEventListener('change',refreshAnalysis4, false);
     }
 }
 
@@ -439,6 +458,14 @@ function getUserInputs(){
     //Analysis #3
     provinceA = String(document.getElementById("regionDropDownListA").value);
     provinceB = String(document.getElementById("regionDropDownListB").value);
+
+    //Analysis #4
+    netProvinceA = String(document.getElementById("netRegionDropDownListA").value);
+    netProvinceB = String(document.getElementById("netRegionDropDownListB").value);
+
+    incomeA = Number(document.getElementById("employmentIncomeA").value);
+    incomeB = Number(document.getElementById("employmentIncomeB").value);
+
 }
 
 
@@ -480,6 +507,8 @@ function calculateTaxes(){
     totalQCTaxes = federalTaxQC+QCTax+QPPTax+EITaxQC+QPIPTax;
     totalSKTaxes = federalTaxROC+SKTax+CPPTax+EITaxROC;
     totalYTTaxes = federalTaxROC+YTTax+CPPTax+EITaxROC;
+
+    totalTaxesArray=[totalABTaxes,totalBCTaxes,totalMBTaxes,totalNBTaxes,totalNLTaxes,totalNTTaxes,totalNSTaxes,totalNUTaxes,totalONTaxes,totalPETaxes,totalQCTaxes,totalSKTaxes,totalYTTaxes];
 
 }
 
@@ -958,6 +987,13 @@ function refreshAnalysis3(){
     showOutputs3();
 }
 
+function refreshAnalysis4(){
+    console.log("refresh analysis #4");
+    getUserInputs();
+    netPaycheckCalculator(netProvinceA,netProvinceB,incomeA,incomeB);
+    showOutputs4();
+}
+
 function sortArrayByRank(unsortedArray, rankOrder){
 
     var sortedArray = [];
@@ -970,9 +1006,14 @@ function sortArrayByRank(unsortedArray, rankOrder){
 }
 
 function calculateMarginalRates(){
-    var marginalArray = [];
-    var currentTotalTaxes = totalTaxesArray.slice(0);
+    
+    calculateTaxes();
 
+    var marginalArray = [];
+    var currentTotalTaxes = [];
+    currentTotalTaxes = totalTaxesArray.slice(0);
+
+    employmentIncome += 1000;
     totalTaxableIncome += 1000;
 
     calculateTaxes();
@@ -983,7 +1024,10 @@ function calculateMarginalRates(){
         marginalArray[i] = (newTotalTaxes[i] - currentTotalTaxes[i]) / 1000;
     }
 
+    employmentIncome -= 1000;
     totalTaxableIncome -= 1000;
+
+    calculateTaxes();
 
     return marginalArray;
 
@@ -2228,6 +2272,217 @@ function showOutputs3(){
 
         }
     });
+}
+
+function netPaycheckCalculator(provinceA,provinceB,incomeA,incomeB){
+
+    var aString = String("calculate"+provinceA);
+    var bString = String("calculate"+provinceB);
+
+    var aString2 = String(provinceA+"Tax");
+    var bString2 = String(provinceB+"Tax");
+
+    //set defaults
+    employmentIncome = 0;
+    capitalGains = 0;
+    eligibleDividends = 0;
+    nonEligibleDividends = 0;
+    otherIncome = 0;
+    RRSPContribution = 0;
+    totalTaxableIncome = 0;
+
+    //calculate net income for province A
+    employmentIncome = incomeA;
+    provinceAOutputs[0] = employmentIncome;
+
+    calculateTaxes();
+    totalTaxableIncome = employmentIncome - enhancedCPPTax;
+
+    marginalTaxRateArray = calculateMarginalRates();
+
+    if(provinceA=="QC"){
+        provinceANetIncome = employmentIncome - federalTaxQC - QPPTax - EITaxQC - QPIPTax - QCTax;
+        provinceAOutputs[1] = federalTaxQC;
+        provinceAOutputs[2] = QCTax;
+        provinceAOutputs[3] = QPPTax;
+        provinceAOutputs[4] = EITaxQC;
+        provinceAOutputs[5] = QPIPTax;
+        provinceAOutputs[6] = federalTaxQC + QCTax + QPPTax + EITaxQC + QPIPTax;
+        provinceAOutputs[7] = provinceANetIncome;
+        provinceAOutputs[8] = provinceANetIncome / 12;
+        provinceAOutputs[9] = provinceANetIncome / 26;
+        provinceAOutputs[10] = (federalTaxQC + QCTax + QPPTax + EITaxQC + QPIPTax) / employmentIncome;
+    } else{
+        provinceANetIncome = eval("employmentIncome - federalTaxROC - CPPTax - EITaxROC - "+aString2); 
+        provinceAOutputs[1] = federalTaxROC;
+        provinceAOutputs[2] = eval(aString2);
+        provinceAOutputs[3] = CPPTax;
+        provinceAOutputs[4] = EITaxROC;
+        provinceAOutputs[5] = 0;
+        provinceAOutputs[6] = federalTaxROC + eval(aString2) + CPPTax + EITaxROC;
+        provinceAOutputs[7] = provinceANetIncome;
+        provinceAOutputs[8] = provinceANetIncome / 12;
+        provinceAOutputs[9] = provinceANetIncome / 26;
+        provinceAOutputs[10] = (federalTaxROC + eval(aString2) + CPPTax + EITaxROC) / employmentIncome;
+    }
+
+    if(provinceA == "AB"){
+        provinceAOutputs[11] = marginalTaxRateArray[0];
+    } else if(provinceA == "BC"){
+        provinceAOutputs[11] = marginalTaxRateArray[1];
+    } else if(provinceA == "MB"){
+        provinceAOutputs[11] = marginalTaxRateArray[2];
+    } else if(provinceA == "NB"){
+        provinceAOutputs[11] = marginalTaxRateArray[3];
+    } else if(provinceA == "NL"){
+        provinceAOutputs[11] = marginalTaxRateArray[4];
+    } else if(provinceA == "NT"){
+        provinceAOutputs[11] = marginalTaxRateArray[5];
+    } else if(provinceA == "NS"){
+        provinceAOutputs[11] = marginalTaxRateArray[6];
+    } else if(provinceA == "NU"){
+        provinceAOutputs[11] = marginalTaxRateArray[7];
+    } else if(provinceA == "ON"){
+        provinceAOutputs[11] = marginalTaxRateArray[8];
+    } else if(provinceA == "PE"){
+        provinceAOutputs[11] = marginalTaxRateArray[9];
+    } else if(provinceA == "QC"){
+        provinceAOutputs[11] = marginalTaxRateArray[10];
+    } else if(provinceA == "SK"){
+        provinceAOutputs[11] = marginalTaxRateArray[11];
+    } else if(provinceA == "YT"){
+        provinceAOutputs[11] = marginalTaxRateArray[12];
+    }
+
+
+    //calculate net income for province B
+    employmentIncome = incomeB;
+    provinceBOutputs[0] = employmentIncome;
+
+    calculateTaxes();
+    totalTaxableIncome = employmentIncome - enhancedCPPTax;
+
+    marginalTaxRateArray = calculateMarginalRates();
+
+    if(provinceB=="QC"){
+        provinceBNetIncome = employmentIncome - federalTaxQC - QPPTax - EITaxQC - QPIPTax - QCTax;
+        provinceBOutputs[1] = federalTaxQC;
+        provinceBOutputs[2] = QCTax;
+        provinceBOutputs[3] = QPPTax;
+        provinceBOutputs[4] = EITaxQC;
+        provinceBOutputs[5] = QPIPTax;
+        provinceBOutputs[6] = federalTaxQC + QCTax + QPPTax + EITaxQC + QPIPTax;
+        provinceBOutputs[7] = provinceBNetIncome;
+        provinceBOutputs[8] = provinceBNetIncome / 12;
+        provinceBOutputs[9] = provinceBNetIncome / 26;
+        provinceBOutputs[10] = (federalTaxQC + QCTax + QPPTax + EITaxQC + QPIPTax) / employmentIncome;
+    } else{
+        provinceBNetIncome = eval("employmentIncome - federalTaxROC - CPPTax - EITaxROC - "+bString2); 
+        provinceBOutputs[1] = federalTaxROC;
+        provinceBOutputs[2] = eval(bString2);
+        provinceBOutputs[3] = CPPTax;
+        provinceBOutputs[4] = EITaxROC;
+        provinceBOutputs[5] = 0;
+        provinceBOutputs[6] = federalTaxROC + eval(bString2) + CPPTax + EITaxROC;
+        provinceBOutputs[7] = provinceBNetIncome;
+        provinceBOutputs[8] = provinceBNetIncome / 12;
+        provinceBOutputs[9] = provinceBNetIncome / 26;
+        provinceBOutputs[10] = (federalTaxROC + eval(bString2) + CPPTax + EITaxROC) / employmentIncome;
+    }
+
+    if(provinceB == "AB"){
+        provinceBOutputs[11] = marginalTaxRateArray[0];
+    } else if(provinceB == "BC"){
+        provinceBOutputs[11] = marginalTaxRateArray[1];
+    } else if(provinceB == "MB"){
+        provinceBOutputs[11] = marginalTaxRateArray[2];
+    } else if(provinceB == "NB"){
+        provinceBOutputs[11] = marginalTaxRateArray[3];
+    } else if(provinceB == "NL"){
+        provinceBOutputs[11] = marginalTaxRateArray[4];
+    } else if(provinceB == "NT"){
+        provinceBOutputs[11] = marginalTaxRateArray[5];
+    } else if(provinceB == "NS"){
+        provinceBOutputs[11] = marginalTaxRateArray[6];
+    } else if(provinceB == "NU"){
+        provinceBOutputs[11] = marginalTaxRateArray[7];
+    } else if(provinceB == "ON"){
+        provinceBOutputs[11] = marginalTaxRateArray[8];
+    } else if(provinceB == "PE"){
+        provinceBOutputs[11] = marginalTaxRateArray[9];
+    } else if(provinceB == "QC"){
+        provinceBOutputs[11] = marginalTaxRateArray[10];
+    } else if(provinceB == "SK"){
+        provinceBOutputs[11] = marginalTaxRateArray[11];
+    } else if(provinceB == "YT"){
+        provinceBOutputs[11] = marginalTaxRateArray[12];
+    }
+
+    console.log("Province A outputs: "+provinceAOutputs);
+    console.log("Province B net income: "+provinceBOutputs);
+
+}
+
+function showOutputs4(){
+    console.log("Show outputs for analysis #4");
+
+    document.getElementById("headerA").innerHTML = netProvinceA;
+    document.getElementById("headerB").innerHTML = netProvinceB;
+
+    //Column A outputs
+    for (i=0; i<12; i++){
+        cellID = "colA"+i
+        if(i<=9){
+            document.getElementById(cellID).innerHTML = dollarFormat(provinceAOutputs[i]);
+        } else{
+            document.getElementById(cellID).innerHTML = percentFormat(provinceAOutputs[i]);
+        }
+    }
+
+    //Column B outputs
+    for (i=0; i<12; i++){
+        cellID = "colB"+i
+        if(i<=9){
+            document.getElementById(cellID).innerHTML = dollarFormat(provinceBOutputs[i]);
+        } else{
+            document.getElementById(cellID).innerHTML = percentFormat(provinceBOutputs[i]);
+        }
+    }
+
+    //Delta column outputs
+    for (i=0; i<12; i++){
+        cellID = "colDelta"+i
+        if(i<=9){
+            document.getElementById(cellID).innerHTML = dollarFormat(provinceBOutputs[i]-provinceAOutputs[i]);
+        } else{
+            document.getElementById(cellID).innerHTML = percentFormat(provinceBOutputs[i]-provinceAOutputs[i]);
+        }
+    }
+
+}
+
+function dollarFormat(value){
+    var formattedValue = "";
+
+    if(value>=0){
+        formattedValue = '$' + Math.round(value).toLocaleString();
+    } else {
+        formattedValue = '($' + Math.abs(Math.round(value)).toLocaleString()+')';
+    }
+
+    return formattedValue;
+}
+
+function percentFormat(value){
+    var formattedValue = "";
+
+    if(value>=0){
+        formattedValue = (Math.round(value*1000)/10).toLocaleString()+"%";
+    } else {
+        formattedValue = '('+Math.abs((Math.round(value*1000)/10)).toLocaleString()+"%)";
+    }
+
+    return formattedValue;
 }
 
 function executeFunctionByName(functionName, context /*, args */) {

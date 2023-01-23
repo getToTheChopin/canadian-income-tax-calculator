@@ -14,16 +14,17 @@
 
     <p>This Canadian income tax calculator lets you convert between pre-tax (gross) income and after-tax (net) income. This calculator also provides comparisons across all provinces and territories in Canada.<p>
 
-    <p>Down below, you'll find three interactive tools which allow you to crunch the numbers from different perspectives.</p>
+    <p>Down below, you'll find four interactive tools which allow you to crunch the numbers from different perspectives.</p>
     <ul>
-        <li>Analysis #1: after-tax income estimator</li>
-        <li>Analysis #2: what salary do I need to get $X of after-tax income?</li>
-        <li>Analysis #3: head-to-head regional comparison</li>
+        <li>Analysis #1: Comparing after-tax incomes by province</li>
+        <li>#2: What salary do I need to get $X of after-tax income?</li>
+        <li>#3: Head-to-head regional comparison</li>
+        <li>#4: Net paycheck calculator</li>
     </ul>
 
     &nbsp;
 
-    <h2>Analysis #1: After-Tax Income Estimator</h2>
+    <h2>Analysis #1: Comparing After-Tax Incomes by Province</h2>
 
     <p>Input your pre-tax income amounts in the boxes below.<p>
 
@@ -144,7 +145,7 @@
             <li>Tax credits which have been incorporated: basic personal amount (federal / provincial), dividend tax credits (federal / provincial), credit for EI / CPP / QPP / QPIP contributions, Canada employment amount, Quebec abatement, your assumed RRSP deduction</li>
             <li>Total taxes are the sum of federal tax, provincial tax, and payroll taxes (CPP / QPP, EI, QPIP)</li>
             <li>The average tax rate is calculated as total taxes paid divided by total pre-tax income (as opposed to total taxable income)</li>
-            <li>The marginal tax rate represents the tax rate paid on +$1,000 of incremental taxable income</li>
+            <li>The marginal tax rate represents the tax rate paid on +$1,000 of incremental employment income (including all payroll taxes)</li>
         </ul>
     </div>
 
@@ -249,13 +250,196 @@
 
     &nbsp;
 
+    
+    <h2>Analysis #4: Net Paycheck Calculator</h2>
+
+    <p>This tool calculates your after-tax income (i.e., net paycheck) under two scenarios of your choice. For example: see how much of that raise you'll actually take-home, or compare job offers across provinces / territories.</p>
+
+    <p>Just select your regions of interest, input your pre-tax salary, and voila!</p>
+
+    <div class="assumptionTableDiv">
+
+        <table>
+            <tr>
+                <td class="analysis4Assumption">Province / Territory</td>
+                <td class="analysis4Assumption">
+                    <select name="netRegionA" class="userInput4" id="netRegionDropDownListA">
+                        <option value="AB">AB</option>
+                        <option value="BC">BC</option>
+                        <option value="MB">MB</option>
+                        <option value="NB">NB</option>
+                        <option value="NL">NL</option>
+                        <option value="NS">NS</option>
+                        <option value="NT">NT</option>
+                        <option value="NU">NU</option>
+                        <option value="ON">ON</option>
+                        <option value="PE">PE</option>
+                        <option value="QC" selected="selected">QC</option>
+                        <option value="SK">SK</option>
+                        <option value="YT">YT</option>
+                    </select>
+                </td>
+
+                <td class="analysis4Assumption">
+                <select name="netRegionB" class="userInput4" id="netRegionDropDownListB">
+                    <option value="AB">AB</option>
+                    <option value="BC" selected="selected">BC</option>
+                    <option value="MB">MB</option>
+                    <option value="NB">NB</option>
+                    <option value="NL">NL</option>
+                    <option value="NS">NS</option>
+                    <option value="NT">NT</option>
+                    <option value="NU">NU</option>
+                    <option value="ON">ON</option>
+                    <option value="PE">PE</option>
+                    <option value="QC">QC</option>
+                    <option value="SK">SK</option>
+                    <option value="YT">YT</option>
+                </select>
+                </td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td class="analysis4Assumption">Pre-Tax Employment Income</td>
+                <td>
+                    <span> $ </span><input type="number" id="employmentIncomeA" class="userInput4 input-number–noSpinners" value="55000" min="0" max="10000000">
+                </td>
+
+                <td>
+                    <span> $ </span><input type="number" id="employmentIncomeB" class="userInput4 input-number–noSpinners" value="55000" min="0" max="10000000">
+                </td>
+                <td></td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div id="outputDiv4" class="assumptionTableDiv">
+
+        <table>
+
+            <tr>
+                <th></th>
+                <th id="headerA">QC</th>
+                <th id="headerB">BC</th>
+                <th>Delta</th>
+            </tr>
+
+            <tr>
+                <td class="boldCell">Pre-Tax Income</td>
+                <td class="boldCell" id="colA0"></td>
+                <td class="boldCell" id="colB0"></td>
+                <td class="boldCell" id="colDelta0"></td>
+            </tr>
+
+            <tr>
+                <td>Federal Tax</td>
+                <td id="colA1"></td>
+                <td id="colB1"></td>
+                <td id="colDelta1"></td>
+            </tr>
+
+            <tr>
+                <td>Provincial Tax</td>
+                <td id="colA2"></td>
+                <td id="colB2"></td>
+                <td id="colDelta2"></td>
+            </tr>
+            
+            <tr>
+                <td>CPP / QPP</td>
+                <td id="colA3"></td>
+                <td id="colB3"></td>
+                <td id="colDelta3"></td>
+            </tr>
+
+            <tr>
+                <td>EI</td>
+                <td id="colA4"></td>
+                <td id="colB4"></td>
+                <td id="colDelta4"></td>
+            </tr>
+
+            <tr>
+                <td>QPIP</td>
+                <td id="colA5"></td>
+                <td id="colB5"></td>
+                <td id="colDelta5"></td>
+            </tr>
+
+            <tr>
+                <td>Total Taxes</td>
+                <td id="colA6"></td>
+                <td id="colB6"></td>
+                <td id="colDelta6"></td>
+            </tr>
+
+            <tr>
+                <td class="highlightCell">Annual After-Tax Income</td>
+                <td class="highlightCell" id="colA7"></td>
+                <td class="highlightCell" id="colB7"></td>
+                <td class="highlightCell" id="colDelta7"></td>
+            </tr>
+
+            <tr>
+                <td class="highlightCell">Monthly After-Tax Income</td>
+                <td class="highlightCell" id="colA8"></td>
+                <td class="highlightCell" id="colB8"></td>
+                <td class="highlightCell" id="colDelta8"></td>
+            </tr>
+
+            <tr>
+                <td class="highlightCell">Bi-weekly After-Tax Income</td>
+                <td class="highlightCell" id="colA9"></td>
+                <td class="highlightCell" id="colB9"></td>
+                <td class="highlightCell" id="colDelta9"></td>
+            </tr>
+
+            <tr>
+                <td>Average Tax Rate</td>
+                <td id="colA10"></td>
+                <td id="colB10"></td>
+                <td id="colDelta10"></td>
+            </tr>
+
+            <tr>
+                <td>Marginal Tax Rate</td>
+                <td id="colA11"></td>
+                <td id="colB11"></td>
+                <td id="colDelta11"></td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div id="analysisNotesDiv">
+        <p>A few notes on this analysis:</p>
+        <ul>
+            <li>All values used for tax brackets, personal amounts, and other credits are for the 2023 tax year</li>
+            <li>Tax credits which have been incorporated: basic personal amount (federal / provincial), dividend tax credits (federal / provincial), credit for EI / CPP / QPP / QPIP contributions, Canada employment amount, Quebec abatement</li>
+            <li>Total taxes are the sum of federal tax, provincial tax, and payroll taxes (CPP / QPP, EI, QPIP)</li>
+            <li>The average tax rate is calculated as total taxes paid divided by total pre-tax income (as opposed to total taxable income)</li>
+            <li>The marginal tax rate represents the tax rate paid on +$1,000 of incremental employment income (including all payroll taxes)</li>
+            <li>No RRSP contribution has been assumed</li>
+        </ul>
+    </div>
+
+    &nbsp;
+
     <h2>Odds and Ends</h2>
 
-    <em><p>Disclaimer: All of the calculations on this page are provided for informational purposes only. While I've done my best to ensure the accuracy of the inputs, assumptions, and calculations, I cannot guarantee that these figures are correct.</p></em>
-
-    <p>For a primer on gross pay, taxes, deductions, and “take-home” pay, check out this article: <b><a href="https://themeasureofaplan.com/understanding-your-paycheck/" target="_blank" rel="noopener">Understanding Your Paycheck</a></b></p>
+    <p>You may be interested in these related articles exploring incomes and cost of living in Canada:</p>
+    <ul>
+        <li><b><a href="https://themeasureofaplan.com/rent-prices-versus-income/" target="_blank" rel="noopener">Rent prices versus income</a></b> in major Canadian cities</li>
+        <li><b><a href="https://themeasureofaplan.com/exploring-canadian-income/" target="_blank" rel="noopener">Exploring Canadian incomes</a></b> by province, age group, and sex</li>
+        <li>A primer on gross pay, taxes, deductions, and “take-home” pay -- <b><a href="https://themeasureofaplan.com/understanding-your-paycheck/" target="_blank" rel="noopener">Understanding Your Paycheck</a></b></li>
+    </ul> 
     
     <p>If you'd prefer a spreadsheet version of this Canadian income tax calculator, you can <a href="https://drive.google.com/drive/u/1/folders/1SQFhW5quzXyWTpumCYy9P4j_Lk_csnqY" target="_blank" rel="noopener">download the excel file here</a>. This is the file I created to work out the math before I turned this into an interactive web tool.</p>
+
+    <em><p>Disclaimer: All of the calculations on this page are provided for informational purposes only. While I've done my best to ensure the accuracy of the inputs, assumptions, and calculations, I cannot guarantee that these figures are correct.</p></em>
 
     <p>The inputs to this calculator were sourced from:</p>
     <ul>
