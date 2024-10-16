@@ -8,9 +8,7 @@
 <body>
     <h1>Canadian Income Tax Calculator</h1>
 
-    &nbsp;
-
-    <p><em>[January 21st, 2023: this page has been updated for the 2023 tax year!]</em></p>
+    <p><em>[October 16, 2024: this page has been updated for the 2024 tax year!]</em></p>
 
     <p>This Canadian income tax calculator lets you convert between pre-tax (gross) income and after-tax (net) income. This calculator also provides comparisons across all provinces and territories in Canada.<p>
 
@@ -38,7 +36,7 @@
             <tr>
                 <td width="60%">Employment Income</td>
                 <td width="40%">
-                    <span> $ </span><input type="number" id="employmentIncome" class="userInput1 input-number–noSpinners" value="55000" min="0" max="10000000">
+                    <span> $ </span><input type="number" id="employmentIncome" class="userInput1 input-number–noSpinners" value="100000" min="0" max="10000000">
                 </td>
             </tr>
 
@@ -140,7 +138,7 @@
     <div id="analysisNotesDiv">
         <p>A few notes on this analysis:</p>
         <ul>
-            <li>All values used for tax brackets, personal amounts, and other credits are for the 2023 tax year</li>
+            <li>All values used for tax brackets, personal amounts, and other credits are for the 2024 tax year</li>
             <li>Taxes included in this analysis: federal tax, provincial tax, CPP / QPP, EI, QPIP (Quebec), OHIP (Ontario)</li>
             <li>Tax credits which have been incorporated: basic personal amount (federal / provincial), dividend tax credits (federal / provincial), credit for EI / CPP / QPP / QPIP contributions, Canada employment amount, Quebec abatement, your assumed RRSP deduction</li>
             <li>Total taxes are the sum of federal tax, provincial tax, and payroll taxes (CPP / QPP, EI, QPIP)</li>
@@ -164,7 +162,7 @@
             <tr>
                 <td width="60%" id="analysis2Label">Annual After-Tax Income</td>
                 <td width="40%" id="analysis2Assumption">
-                    <span> $ </span><input type="number" id="afterTaxIncomeAssumption" class="userInput2 input-number–noSpinners" value="40000" min="0" max="10000000" step="1000">
+                    <span> $ </span><input type="number" id="afterTaxIncomeAssumption" class="userInput2 input-number–noSpinners" value="70000" min="0" max="10000000" step="1000">
                 </td>
             </tr>
         </table>
@@ -176,7 +174,7 @@
         </div>
     </div>
 
-    <p id="analysis2Note">Note: The pre-tax incomes shown above are approximate, as they have been rounded up to the nearest $500 increment.</p>
+    <p id="analysis2Note">Note: The pre-tax incomes shown above are approximate, as they've been calculated using a "goal seek" function and are rounded up to the nearest $500 increment.</p>
 
     &nbsp;
 
@@ -250,7 +248,6 @@
 
     &nbsp;
 
-    
     <h2>Analysis #4: Net Paycheck Calculator</h2>
 
     <p>This tool calculates your after-tax income (i.e., net paycheck) under two scenarios of your choice. For example: see how much of that raise you'll actually take-home, or compare job offers across provinces / territories.</p>
@@ -303,11 +300,11 @@
             <tr>
                 <td class="analysis4Assumption">Pre-Tax Employment Income</td>
                 <td>
-                    <span> $ </span><input type="number" id="employmentIncomeA" class="userInput4 input-number–noSpinners" value="55000" min="0" max="10000000">
+                    <span> $ </span><input type="number" id="employmentIncomeA" class="userInput4 input-number–noSpinners" value="100000" min="0" max="10000000">
                 </td>
 
                 <td>
-                    <span> $ </span><input type="number" id="employmentIncomeB" class="userInput4 input-number–noSpinners" value="55000" min="0" max="10000000">
+                    <span> $ </span><input type="number" id="employmentIncomeB" class="userInput4 input-number–noSpinners" value="100000" min="0" max="10000000">
                 </td>
                 <td></td>
             </tr>
@@ -417,7 +414,7 @@
     <div id="analysisNotesDiv">
         <p>A few notes on this analysis:</p>
         <ul>
-            <li>All values used for tax brackets, personal amounts, and other credits are for the 2023 tax year</li>
+            <li>All values used for tax brackets, personal amounts, and other credits are for the 2024 tax year</li>
             <li>Tax credits which have been incorporated: basic personal amount (federal / provincial), dividend tax credits (federal / provincial), credit for EI / CPP / QPP / QPIP contributions, Canada employment amount, Quebec abatement</li>
             <li>Total taxes are the sum of federal tax, provincial tax, and payroll taxes (CPP / QPP, EI, QPIP)</li>
             <li>The average tax rate is calculated as total taxes paid divided by total pre-tax income (as opposed to total taxable income)</li>
@@ -451,8 +448,6 @@
 
     <p>—</p>
     <p><em>Header image credit: <a href="https://www.csneal.com/illustration" target="_blank" rel="noopener">Christopher Silas Neal</a></em></p>
-
-    &nbsp;
 
     <!-- <script src="https://use.fontawesome.com/1565da84fa.js"></script> -->
     <script src="https://kit.fontawesome.com/d8d00f70eb.js" crossorigin="anonymous"></script>
