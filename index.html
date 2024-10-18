@@ -6,32 +6,33 @@
 </head>
 
 <body>
-    <h1>Canadian Income Tax Calculator</h1>
+    <h1>2024 Canadian Income Tax / Paycheck Calculator</h1>
 
-    <p><em>[October 16, 2024: this page has been updated for the 2024 tax year!]</em></p>
-
-    <p>This Canadian income tax calculator lets you convert between pre-tax (gross) income and after-tax (net) income. This calculator also provides comparisons across all provinces and territories in Canada.<p>
-
-    <p>Down below, you'll find four interactive tools which allow you to crunch the numbers from different perspectives.</p>
-    <ul>
-        <li>Analysis #1: Comparing after-tax incomes by province</li>
-        <li>#2: What salary do I need to get $X of after-tax income?</li>
-        <li>#3: Head-to-head regional comparison</li>
-        <li>#4: Net paycheck calculator</li>
-    </ul>
-
+    <p>This calculator quickly estimates income taxes and take-home pay for all provinces / territories in Canada.</p>
+    <p>You can use this tool to calculate your monthly take-home pay after getting a raise, compare job offers in different provinces, or to make a tax-efficient retirement income plan.</p>
+    <p>Down below, you'll find four interactive tools to crunch the numbers from different perspectives.</p>
+    <div id="toc_container">
+        <p class="toc_title" id="toc0">Table of Contents</p>
+        <ul class="toc_list">
+            <li><a href="#toc1">Comparing After-Tax Incomes by Province</a></li>
+            <li><a href="#toc2">Net Paycheck / Pay Raise Calculator</a></li>
+            <li><a href="#toc3">What Salary Do I Need to Get $X of After-Tax Income?</a></li>
+            <li><a href="#toc4">Head-to-Head Regional Comparison</a></li>
+        </ul>
+    </div>
+    <p><em>[As of October 16, 2024, this page has been updated for the 2024 tax year!]</em></p>
     &nbsp;
 
-    <h2>Analysis #1: Comparing After-Tax Incomes by Province</h2>
+    <h2 id="toc1">Comparing After-Tax Incomes by Province <span class="backToTop"><a href="#toc0">[back to top]</a></span></h2>
 
     <p>Input your pre-tax income amounts in the boxes below.<p>
 
-    <p>For each province and territory in Canada, the outputs will display your after-tax income, total taxes paid, and average / marginal tax rates.</p>
+    <p>The charts will then show after-tax income, total taxes paid, and average / marginal tax rates -- shown for each province and territory in Canada.</p>
 
     <div class="assumptionTableDiv">
         <table>
             <tr>
-                <th colspan="2">Your Income Assumptions</th>
+                <th colspan="2">Your Income</th>
             </tr>
             <tr>
                 <td width="60%">Employment Income</td>
@@ -79,10 +80,10 @@
 
         <table>
             <tr>
-                <th colspan="2">Your RRSP Assumption</th>
+                <th colspan="2">Your RRSP / FHSA Contributions</th>
             </tr>
             <tr>
-                <td width="60%">RRSP Contribution</td>
+                <td width="60%">RRSP + FHSA Contribution</td>
                 <td width="40%">
                     <span> $ </span><input type="number" id="RRSPContribution" class="userInput1 input-number–noSpinners" value="0" min="0" max="10000000">
                 </td>
@@ -104,8 +105,7 @@
         <p><b>RRSP Contribution:</b> The total amount of your RRSP contribution in this tax year</p>
     </div>
 
-    <div id="outputDiv">
-
+    <div id="outputDiv" tabindex="0">
         <div id="afterTaxIncomeBarChartDiv">
             <canvas id="afterTaxIncomeBarChart"></canvas>
         </div>
@@ -149,108 +149,9 @@
 
     &nbsp;
 
+    <h2 id="toc2">Net Paycheck / Pay Raise Calculator <span class="backToTop"><a href="#toc0">[back to top]</a></span></h2>
 
-    <h2>Analysis #2: What Salary Do I Need to Get $X of After-Tax Income?</h2>
-
-    <p>For any target amount of after-tax income, this tool tells you how much pre-tax employment income you'd need to get there.</p>
-
-    <p>Put another way -- if you're looking to earn a certain amount of take-home pay, this shows the salary that would be required in each province or territory to meet your goal.</p>
-
-    <p>
-    <div class="assumptionTableDiv">
-        <table>
-            <tr>
-                <td width="60%" id="analysis2Label">Annual After-Tax Income</td>
-                <td width="40%" id="analysis2Assumption">
-                    <span> $ </span><input type="number" id="afterTaxIncomeAssumption" class="userInput2 input-number–noSpinners" value="70000" min="0" max="10000000" step="1000">
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div id="outputDiv2">
-        <div id="grossIncomeBarChartDiv">
-            <canvas id="grossIncomeBarChart"></canvas>
-        </div>
-    </div>
-
-    <p id="analysis2Note">Note: The pre-tax incomes shown above are approximate, as they've been calculated using a "goal seek" function and are rounded up to the nearest $500 increment.</p>
-
-    &nbsp;
-
-    <h2>Analysis #3: Head-to-Head Regional Comparison</h2>
-
-    <p>This analysis lets you see how after-tax income stacks up in one region of Canada versus another.</p>
-
-    <p>Specifically, for a range of pre-tax employment income from $0 to $300,000 per year, these charts display the after-tax income for each region, and the implied difference in after-tax income.</p>
-
-    <p>Use the drop-down boxes below to select your regions of interest.</p>
-
-    <div class="assumptionTableDiv">
-
-        <table>
-            <tr>
-                <td class="analysis3Assumption">Province / Territory #1</td>
-                <td class="analysis3Assumption">
-                    <select name="regionA" class="userInput3" id="regionDropDownListA">
-                        <option value="AB" selected="selected">AB</option>
-                        <option value="BC">BC</option>
-                        <option value="MB">MB</option>
-                        <option value="NB">NB</option>
-                        <option value="NL">NL</option>
-                        <option value="NS">NS</option>
-                        <option value="NT">NT</option>
-                        <option value="NU">NU</option>
-                        <option value="ON">ON</option>
-                        <option value="PE">PE</option>
-                        <option value="QC">QC</option>
-                        <option value="SK">SK</option>
-                        <option value="YT">YT</option>
-                    </select>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="analysis3Assumption">Province / Territory #2</td>
-                <td class="analysis3Assumption">
-                <select name="regionB" class="userInput3" id="regionDropDownListB">
-                    <option value="AB">AB</option>
-                    <option value="BC">BC</option>
-                    <option value="MB">MB</option>
-                    <option value="NB">NB</option>
-                    <option value="NL">NL</option>
-                    <option value="NS">NS</option>
-                    <option value="NT">NT</option>
-                    <option value="NU">NU</option>
-                    <option value="ON" selected="selected">ON</option>
-                    <option value="PE">PE</option>
-                    <option value="QC">QC</option>
-                    <option value="SK">SK</option>
-                    <option value="YT">YT</option>
-                </select>
-                </td>
-            </tr>
-        </table>
-
-    </div>
-
-    <div id="outputDiv3">
-        <div id="provinceChartDiv">
-            <canvas id="provinceChart"></canvas>
-        </div>
-
-        <p id="analysis3Para"></p>   
-
-        <div id="provinceDeltaChartDiv">
-            <canvas id="provinceDeltaChart"></canvas>
-        </div>
-    </div>
-
-    &nbsp;
-
-    <h2>Analysis #4: Net Paycheck Calculator</h2>
-
-    <p>This tool calculates your after-tax income (i.e., net paycheck) under two scenarios of your choice. For example: see how much of that raise you'll actually take-home, or compare job offers across provinces / territories.</p>
+    <p>This tool calculates your after-tax income (a.k.a. take-home pay) under two scenarios of your choice. For example: find out how much of your pay raise you'll actually receive, or compare job offers across provinces / territories.</p>
 
     <p>Just select your regions of interest, input your pre-tax salary, and voila!</p>
 
@@ -312,7 +213,7 @@
 
     </div>
 
-    <div id="outputDiv4" class="assumptionTableDiv">
+    <div id="outputDiv4" tabindex="0" class="assumptionTableDiv">
 
         <table>
 
@@ -425,13 +326,114 @@
 
     &nbsp;
 
-    <h2>Odds and Ends</h2>
+    <h2 id="toc3">What Salary Do I Need to Get $X of After-Tax Income? <span class="backToTop"><a href="#toc0">[back to top]</a></span></h2>
+
+    <p>For any target amount of after-tax income, this tool tells you how much pre-tax employment income you'd need to get there.</p>
+    <p>Put another way -- if you're looking to earn a certain amount of take-home pay, this shows the salary that would be required in each province or territory to meet your goal.</p>
+    <p>For example, a pre-tax salary of $93,000 is equivalent to a salary of $102,000 in Quebec -- in both cases, you'd earn $70,000 after-tax in both provinces.</p>
+
+
+    <p>
+    <div class="assumptionTableDiv">
+        <table>
+            <tr>
+                <td width="60%" id="analysis2Label">Annual After-Tax Income</td>
+                <td width="40%" id="analysis2Assumption">
+                    <span> $ </span><input type="number" id="afterTaxIncomeAssumption" class="userInput2 input-number–noSpinners" value="70000" min="0" max="10000000" step="1000">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="outputDiv2" tabindex="0">
+        <div id="grossIncomeBarChartDiv">
+            <canvas id="grossIncomeBarChart"></canvas>
+        </div>
+    </div>
+
+    <p id="analysis2Note">Note: The pre-tax incomes shown above are approximate, as they've been calculated using a "goal seek" function and are rounded up to the nearest $500 increment.</p>
+
+    &nbsp;
+
+    <h2 id="toc4">Head-to-Head Regional Comparison <span class="backToTop"><a href="#toc0">[back to top]</a></span></h2>
+
+    <p>This analysis lets you see how after-tax income stacks up in one region of Canada versus another.</p>
+
+    <p>Specifically, for a range of pre-tax employment income from $0 to $300,000 per year, these charts display the after-tax income for each region, and the implied difference in after-tax income.</p>
+
+    <p>Use the drop-down boxes below to select your regions of interest.</p>
+
+    <div class="assumptionTableDiv">
+
+        <table>
+            <tr>
+                <td class="analysis3Assumption">Province / Territory #1</td>
+                <td class="analysis3Assumption">
+                    <select name="regionA" class="userInput3" id="regionDropDownListA">
+                        <option value="AB" selected="selected">AB</option>
+                        <option value="BC">BC</option>
+                        <option value="MB">MB</option>
+                        <option value="NB">NB</option>
+                        <option value="NL">NL</option>
+                        <option value="NS">NS</option>
+                        <option value="NT">NT</option>
+                        <option value="NU">NU</option>
+                        <option value="ON">ON</option>
+                        <option value="PE">PE</option>
+                        <option value="QC">QC</option>
+                        <option value="SK">SK</option>
+                        <option value="YT">YT</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="analysis3Assumption">Province / Territory #2</td>
+                <td class="analysis3Assumption">
+                <select name="regionB" class="userInput3" id="regionDropDownListB">
+                    <option value="AB">AB</option>
+                    <option value="BC">BC</option>
+                    <option value="MB">MB</option>
+                    <option value="NB">NB</option>
+                    <option value="NL">NL</option>
+                    <option value="NS">NS</option>
+                    <option value="NT">NT</option>
+                    <option value="NU">NU</option>
+                    <option value="ON" selected="selected">ON</option>
+                    <option value="PE">PE</option>
+                    <option value="QC">QC</option>
+                    <option value="SK">SK</option>
+                    <option value="YT">YT</option>
+                </select>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div id="outputDiv3" tabindex="0">
+        <div id="provinceChartDiv">
+            <canvas id="provinceChart"></canvas>
+        </div>
+
+        <p id="analysis3Para"></p>   
+
+        <div id="provinceDeltaChartDiv">
+            <canvas id="provinceDeltaChart"></canvas>
+        </div>
+    </div>
+
+    &nbsp;
+
+    <h2>Odds and Ends <span class="backToTop"><a href="#toc0">[back to top]</a></span></h2>
 
     <p>You may be interested in these related articles exploring incomes and cost of living in Canada:</p>
     <ul>
-        <li><b><a href="https://themeasureofaplan.com/rent-prices-versus-income/" target="_blank" rel="noopener">Rent prices versus income</a></b> in major Canadian cities</li>
-        <li><b><a href="https://themeasureofaplan.com/exploring-canadian-income/" target="_blank" rel="noopener">Exploring Canadian incomes</a></b> by province, age group, and sex</li>
-        <li>A primer on gross pay, taxes, deductions, and “take-home” pay -- <b><a href="https://themeasureofaplan.com/understanding-your-paycheck/" target="_blank" rel="noopener">Understanding Your Paycheck</a></b></li>
+        <li><a href="https://themeasureofaplan.com/canadian-housing-affordability/" target="_blank" rel="noopener">Tracking Canadian Housing Market Affordability (1999 to 2024)</li>
+        <li><a href="https://themeasureofaplan.com/canadian-food-price-inflation/" target="_blank" rel="noopener">Canadian Food Price Inflation – tracking prices for 110 foods</li>
+        <li><a href="https://themeasureofaplan.com/rent-prices-versus-income/" target="_blank" rel="noopener">Rent prices versus income in major Canadian cities</a></li>
+        <li><a href="https://themeasureofaplan.com/exploring-canadian-income/" target="_blank" rel="noopener">Exploring Canadian incomes by province, age group, and sex</a></li>
+        <li><a href="https://themeasureofaplan.com/understanding-your-paycheck/" target="_blank" rel="noopener">Understanding Your Paycheck</a></b>: A primer on gross pay, taxes, deductions, and “take-home” pay</li>
     </ul> 
     
     <p>If you'd prefer a spreadsheet version of this Canadian income tax calculator, you can <a href="https://drive.google.com/drive/u/1/folders/1SQFhW5quzXyWTpumCYy9P4j_Lk_csnqY" target="_blank" rel="noopener">download the excel file here</a>. This is the file I created to work out the math before I turned this into an interactive web tool.</p>

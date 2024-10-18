@@ -263,3 +263,34 @@ input[type=number]:hover{
     width: 100px;
 	max-width:80%;
 }
+
+/*Styling for table of contents*/
+
+#toc_container {
+    background: #f9f9f9 none repeat scroll 0 0;
+    border: 1px solid #aaa;
+    display: table;
+    font-size: 0.95em;
+    margin-bottom: 1em;
+    padding: 2%;
+    width: auto;
+}
+
+.toc_title {
+    font-weight: bold;
+    text-align: center;
+	font-size: 1.1em;
+}
+
+#toc_container li, #toc_container ul, #toc_container ul li{
+    list-style: outside none none !important;
+}
+
+.backToTop {
+	font-weight: normal;
+	font-size: 0.75em;
+}
+
+#BTTLink{
+	color: #5C5C5C !important;
+}
